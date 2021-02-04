@@ -4,9 +4,17 @@ import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/common/Navbar/Navbar';
-import Footer from './components/common/Footer/Footer';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getProfileAC } from './store/actions/getProfile.actions';
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    const token = JSON.parse(localStorage.getItem('jwt'))
+    dispatch(getProfileAC({ token } ))
+  }, [])
+
   return (
     <div className='App'>
       <NavBar/>
@@ -14,7 +22,6 @@ function App() {
         <Route exact path='/login' component={Login}/>
         <Route exact path='/signup' component={SignUp}/>
       </Switch>
-      <Footer/>
     </div>
   );
 }

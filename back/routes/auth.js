@@ -10,7 +10,6 @@ const saltRounds = 12;
 const tokenKey = '1a2b-3c4d-5e6f-7g8h';
 
 router.post('/', async (req, res) => {
-
         const { token } = req.body;
         let data = jwt.verify(token, tokenKey, (err, decoded) => {
             if (err) res.json({ success: false, message: 'token expired' });
@@ -37,7 +36,7 @@ router.post('/login', async (req, res, next) => {
     try{
     let user = await User.findOne({email})
     if (user && (await bcrypt.compare(password, user.password))) {
-        let token = await jwt.sign({id: user._id }, tokenKey, {expiresIn: 60 * 24});
+        let token = await jwt.sign({id: user._id }, tokenKey, {expiresIn: 60 * 600});
         res.json({success: true, token});
     }
     if (user) {
@@ -59,7 +58,7 @@ router.post('/signup', async (req, res, next) => {
         if (await User.findOne({ email })) {
             res.json({ success: false, message: 'Such user already exists' });
         }
-        if(role!==0) {
+        if(role!=='User') {
             if (secret && secret !== secretKey) {
                 res.json({ success: false, message: 'Wrong Secret Key' })
             }
@@ -73,7 +72,7 @@ router.post('/signup', async (req, res, next) => {
                     company
                 });
                 await user.save();
-                let token = jwt.sign({ id: user.id }, tokenKey, { expiresIn: 60 * 600 });
+                let token = jwt.sign({ id: user._id }, tokenKey, { expiresIn: 60 * 600 });
                 res.json({ success: true, token }).status(200);
             }
         }
@@ -86,7 +85,7 @@ router.post('/signup', async (req, res, next) => {
             company
         });
         await user.save();
-        let token = jwt.sign({ id: user.id }, tokenKey, { expiresIn: 60 * 600 });
+        let token = jwt.sign({ id: user._id }, tokenKey, { expiresIn: 60 * 600 });
         res.json({ success: true, token }).status(200);
     }
     catch (err){
