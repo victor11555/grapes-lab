@@ -5,6 +5,11 @@ const tokenKey = '1a2b-3c4d-5e6f-7g8h';
 
 const Project = require('../models/project');
 
+router.get('/', async (req, res) =>{
+  const projects = await Project.find()
+  res.json({success: true, projects});
+})
+
 router.post('/', async (req, res, next) => {
   const { token } = req.body;
   let data = jwt.verify(token, tokenKey, (err, decoded) => {
@@ -16,7 +21,9 @@ router.post('/', async (req, res, next) => {
   const {
     status,
     concept,
+    projectName,
     projectResult,
+    description,
     technology,
     comparison,
     basis,
@@ -34,7 +41,9 @@ router.post('/', async (req, res, next) => {
       author: user._id,
       status,
       concept,
+      projectName,
       projectResult,
+      description,
       technology,
       comparison,
       basis,
