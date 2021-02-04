@@ -7,6 +7,7 @@ import NavBar from './components/common/Navbar/Navbar';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getProfileAC } from './store/actions/getProfile.actions';
+import Footer from './components/common/Footer/Footer';
 
 function App() {
   const dispatch = useDispatch()
@@ -22,6 +23,7 @@ function App() {
         <Route exact path='/login' component={Login}/>
         <Route exact path='/signup' component={SignUp}/>
       </Switch>
+      <Footer/>
     </div>
   );
 }
