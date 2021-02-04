@@ -1,9 +1,10 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {USER_LOGIN} from "../types";
 import {addErrorAC} from "../actions/error.actions";
+import {LOGIN_URL} from "../../utils/urls";
 
 async function RequestLogin(payload) {
-    const response = await fetch('/auth/login', {
+    const response = await fetch(LOGIN_URL, {
         method: 'POST',
         headers: {'Content-type': 'Application/json'},
         body: JSON.stringify({payload})
