@@ -56,7 +56,10 @@ router.post('/signup', async (req, res, next) => {
         name, email, password, phone, company, role, secret
     } = req.body;
     try {
-        if(role!==1 &&role!==0) {
+        if (await User.findOne({ email })) {
+            res.json({ success: false, message: 'Such user already exists' });
+        }
+        if(role!==1 && role!==0) {
             if (secret && secret !== secretKey) {
                 res.json({ success: false, message: 'Wrong Secret Key' })
             }
@@ -74,9 +77,7 @@ router.post('/signup', async (req, res, next) => {
                 res.json({ success: true, token }).status(200);
             }
         }
-        if (await User.findOne({ email })) {
-            res.json({ success: false, message: 'Such user already exists' });
-        }
+
         let user = await new User({
             name,
             email,
