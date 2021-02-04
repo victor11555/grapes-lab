@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
 function SignUpBox() {
-  const secretKey = <Form.Group controlId="secretKey">
+  const secretKey = <Form.Group  controlId="secretKey">
     <Form.Label>Secret key</Form.Label>
-    <Form.Control type="password" placeholder="Secret key" />
+    <Form.Control name={'secret'} type="password" placeholder="Secret key" />
   </Form.Group>
   const [select, setSelect] = useState(false)
   const viewSecretKey = (e) => {
-    if(e.target.value == 'Admin' || e.target.value == 'Curator'){
-        setSelect(true)
+    if(e.target.value == 'User'){
+        setSelect(false)
     } else {
-      setSelect(false)
+      setSelect(true)
 
     }
   }
@@ -46,9 +46,9 @@ function SignUpBox() {
         <Form.Group controlId="Form.ControlSelect1">
           <Form.Label>Role select</Form.Label>
           <Form.Control onChange={viewSecretKey} name={'role'} as="select">
-            <option>Stakeholder</option>
             <option>User</option>
             <option>Support</option>
+            <option>Stakeholder</option>
             <option>Curator</option>
             <option>Admin</option>
           </Form.Control>
