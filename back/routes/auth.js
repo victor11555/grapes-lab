@@ -10,7 +10,6 @@ const saltRounds = 12;
 const tokenKey = '1a2b-3c4d-5e6f-7g8h';
 
 router.post('/', async (req, res) => {
-
         const { token } = req.body;
         let data = jwt.verify(token, tokenKey, (err, decoded) => {
             if (err) res.json({ success: false, message: 'token expired' });

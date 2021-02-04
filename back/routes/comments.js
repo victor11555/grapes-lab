@@ -13,18 +13,17 @@ router.post('/',async (req,res)=>{
     if (err) res.json({ success: false, message: 'token expired' });
     return decoded;
   });
-
   const { id } = data;
-  let comment = await Comment.create({
+  let project = await Project.findById(projectID)
+  let comment = new Comment({
     text,
     author:id,
+    project: projectID,
   })
-  let project = await Project.findById(projectID)
-  project.comments.push(comment)
-  await project.save()
   await comment.save()
+  project.comments.push(comment._id)
+  await project.save()
   res.json({ success :true,comment})
-
 })
 
 
