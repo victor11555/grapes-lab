@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { userSignupAC } from '../../../store/actions/signup.actions'
+
 function SignUpBox() {
   const dispatch = useDispatch()
   const submitHandler = (e) => {
@@ -37,8 +38,8 @@ function SignUpBox() {
   }
 
   return (
-    <>
       <Container>
+        <Row>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="formBasicName">
           <Form.Label>Name</Form.Label>
@@ -78,8 +79,8 @@ function SignUpBox() {
           Sign Up
         </Button>
       </Form>
+        </Row>
       </Container>
-    </>
   );
 }
 
