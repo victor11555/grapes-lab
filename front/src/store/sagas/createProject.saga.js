@@ -20,7 +20,7 @@ function* createProjectWorker({payload}) {
     const response = yield call(RequestCreateProject, payload);
     console.log(response);
     if (response.success) yield put(addProjectAC(response.project))
-    yield put(addErrorAC(response.message));
+  else yield put(addErrorAC(response.message));
 }
 
 export function* createProjectWatcher() {

@@ -8,8 +8,12 @@ function CreateProjectForm(props) {
 	const [select, setSelect] = useState(false);
 	const dispatch = useDispatch();
 
-	const submitHandler = (e) => {
+		const submitHandler = (e) => {
 		e.preventDefault();
+
+		const boolNeedPrototype = e.target.needPrototype.value === 'Yes' ? true : false;
+			const boolAdditionalNeeds = e.target.additionalNeeds.value  === 'Yes' ? true : false;
+
 		const {
 			concept: {value: concept},
 			projectName: {value: projectName},
@@ -21,8 +25,6 @@ function CreateProjectForm(props) {
 			needs: {value: needs},
 			targetClient: {value: targetClient},
 			acceptableOutcome: {value: acceptableOutcome},
-			needPrototype: {value: needPrototype},
-			additionalNeeds: {value: additionalNeeds},
 		} = e.target;
 
 		const token = JSON.parse(localStorage.getItem('jwt'));
@@ -39,8 +41,8 @@ function CreateProjectForm(props) {
 			needs,
 			targetClient,
 			acceptableOutcome,
-			needPrototype,
-			additionalNeeds
+			needPrototype: boolNeedPrototype,
+			additionalNeeds: boolAdditionalNeeds,
 		}));
 	};
 
@@ -102,11 +104,12 @@ function CreateProjectForm(props) {
 				</Form.Group>
 				<Form.Group controlId="Form.ControlSelect1">
 					<Form.Label>Need prototype</Form.Label>
-					<Form.Control onChange={ viewNeedPrototype } name={ 'needPrototype' } as="select">
+						<Form.Control onChange={ viewNeedPrototype } name={ 'needPrototype' } as="select">
 						<option>No</option>
 						<option>Yes</option>
 					</Form.Control>
 				</Form.Group>
+				{ select ? needPrototype : null }
 				<Form.Group>
 					<Form.Label>Additional Needs</Form.Label>
 					<Form.Control name={ 'additionalNeeds' } as="select">
@@ -114,7 +117,6 @@ function CreateProjectForm(props) {
 						<option>Yes</option>
 					</Form.Control>
 				</Form.Group>
-				{ select ? needPrototype : null }
 				<Button variant="primary" type="submit">
 					Submit
 				</Button>
