@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema({
-  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-  status: { type: String, required: true },
   concept: { type: String, required: true },
   projectName: { type: String, required: true},
   description: { type: String, required: true},
@@ -19,7 +17,9 @@ const projectSchema = new mongoose.Schema({
   team: [{type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}],
   moderating: { type: Boolean, required: true, default: false },
   rating: { type: Number, required: true, default: 0 },
-  comments:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}]
+  status: { type: String, required: true },
+  comments:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}],
+  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 
 module.exports = mongoose.model('Project', projectSchema);
