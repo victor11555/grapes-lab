@@ -72,7 +72,7 @@ router.post('/signup', async (req, res, next) => {
                     company
                 });
                 await user.save();
-                let token = jwt.sign({ id: user.id }, tokenKey, { expiresIn: 60 * 600 });
+                let token = jwt.sign({ id: user._id }, tokenKey, { expiresIn: 60 * 600 });
                 res.json({ success: true, token }).status(200);
             }
         }
@@ -85,7 +85,7 @@ router.post('/signup', async (req, res, next) => {
             company
         });
         await user.save();
-        let token = jwt.sign({ id: user.id }, tokenKey, { expiresIn: 60 * 600 });
+        let token = jwt.sign({ id: user._id }, tokenKey, { expiresIn: 60 * 600 });
         res.json({ success: true, token }).status(200);
     }
     catch (err){
