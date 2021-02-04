@@ -39,6 +39,7 @@ function SignUpBox() {
   }
 
   return (
+    <div className={'signupImg'}>
       <Container>
         <div className={'signup-form'}>
       <Form onSubmit={submitHandler}>
@@ -82,6 +83,7 @@ function SignUpBox() {
       </Form>
       </div>
       </Container>
+    </div>
   );
 }
 
