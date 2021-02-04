@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card'
 import Vote from '../Vote/Vote';
 
 function ProjectCard({id, author, projectName, concept, rating, status}) {
