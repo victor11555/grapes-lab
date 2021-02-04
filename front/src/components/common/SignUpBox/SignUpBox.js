@@ -1,7 +1,22 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-
+import { useDispatch } from 'react-redux';
+import { userSignupAC } from '../../../store/actions/signup.actions'
 function SignUpBox() {
+  const dispatch = useDispatch()
+  const submitHandler = (e) => {
+    e.preventDefault()
+    const {
+      name : {value: name},
+      email : { value : email},
+      password : { value : password},
+      phone : { value : phone},
+      company : { value : company},
+      role : { value : role},
+      secret : { value : secret},
+    } = e.target
+    dispatch(userSignupAC({name, email, password, phone, company, role, secret}))
+  }
   const secretKey = <Form.Group  controlId="secretKey">
     <Form.Label>Secret key</Form.Label>
     <Form.Control name={'secret'} type="password" placeholder="Secret key" />
@@ -19,7 +34,7 @@ function SignUpBox() {
   return (
     <>
       <Container>
-      <Form>
+      <Form onSubmit={submitHandler}>
         <Form.Group controlId="formBasicName">
           <Form.Label>Name</Form.Label>
           <Form.Control name={'name'} type="text" placeholder="Enter your name" />
@@ -33,7 +48,7 @@ function SignUpBox() {
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control name={'password'} type="password" placeholder="Password" />
         </Form.Group>
         <Form.Group controlId="formBasicPhone">
           <Form.Label>Phone</Form.Label>
