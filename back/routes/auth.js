@@ -59,7 +59,7 @@ router.post('/signup', async (req, res, next) => {
         if (await User.findOne({ email })) {
             res.json({ success: false, message: 'Such user already exists' });
         }
-        if(role!==1 && role!==0) {
+        if(role!==0) {
             if (secret && secret !== secretKey) {
                 res.json({ success: false, message: 'Wrong Secret Key' })
             }
