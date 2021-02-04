@@ -1,9 +1,24 @@
-import React from 'react';
-import {Form, Button} from "react-bootstrap";
+import React, { useState } from 'react';
+import { Form, Button, Container } from 'react-bootstrap';
 
 function SignUpBox() {
+  const secretKey = <Form.Group controlId="secretKey">
+    <Form.Label>Secret key</Form.Label>
+    <Form.Control type="password" placeholder="Secret key" />
+  </Form.Group>
+  const [select, setSelect] = useState(false)
+  const viewSecretKey = (e) => {
+    if(e.target.value == 'Admin' || e.target.value == 'Curator'){
+        setSelect(true)
+    } else {
+      setSelect(false)
+
+    }
+  }
+
   return (
     <>
+      <Container>
       <Form>
         <Form.Group controlId="formBasicName">
           <Form.Label>Name</Form.Label>
@@ -28,20 +43,22 @@ function SignUpBox() {
           <Form.Label>Company</Form.Label>
           <Form.Control name={'company'} type="text" placeholder="Enter your company" />
         </Form.Group>
-        <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Group controlId="Form.ControlSelect1">
           <Form.Label>Role select</Form.Label>
-          <Form.Control name={'role'} as="select">
-            <option>Admin</option>
+          <Form.Control onChange={viewSecretKey} name={'role'} as="select">
             <option>Stakeholder</option>
+            <option>User</option>
             <option>Support</option>
             <option>Curator</option>
-            <option>User</option>
+            <option>Admin</option>
           </Form.Control>
         </Form.Group>
+        {select ? secretKey : null}
         <Button name={'signUpBtn'} variant="primary" type="submit">
           Sign Up
         </Button>
       </Form>
+      </Container>
     </>
   );
 }
