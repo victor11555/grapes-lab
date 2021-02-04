@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     try {
         const { id } = data;
         let userFromDB = await User.findOne({ _id: id })
-        let {name,email,phone,company,role}
+        let {name,email,phone,company,role} = userFromDB
         if (userFromDB) {
             res.json({ success: true, user:{name,email,phone,company,role} });
         } else {
@@ -37,7 +37,7 @@ router.post('/login', async (req, res, next) => {
     try{
     let user = await User.findOne({email})
     if (user && (await bcrypt.compare(password, user.password))) {
-        let token = await jwt.sign({id: user._id,role:user.role,}, tokenKey, {expiresIn: 60 * 24});
+        let token = await jwt.sign({id: user._id }, tokenKey, {expiresIn: 60 * 24});
         res.json({success: true, token});
     }
     if (user) {
@@ -56,8 +56,23 @@ router.post('/signup', async (req, res, next) => {
         name, email, password, phone, company, role, secret
     } = req.body;
     try {
-        if (secret && secret !== secretKey) {
-            res.json({ success: false, message: 'Wrong Secret Key' })
+        if(role!==1 &&role!==0) {
+            if (secret && secret !== secretKey) {
+                res.json({ success: false, message: 'Wrong Secret Key' })
+            }
+            else{
+                let user = await new User({
+                    name,
+                    email,
+                    password: await bcrypt.hash(password, saltRounds),
+                    phone,
+                    role,
+                    company
+                });
+                await user.save();
+                let token = jwt.sign({ id: user.id }, tokenKey, { expiresIn: 60 * 600 });
+                res.json({ success: true, token }).status(200);
+            }
         }
         if (await User.findOne({ email })) {
             res.json({ success: false, message: 'Such user already exists' });
@@ -67,9 +82,10 @@ router.post('/signup', async (req, res, next) => {
             email,
             password: await bcrypt.hash(password, saltRounds),
             phone,
+            company
         });
         await user.save();
-        let token = jwt.sign({ id: user.id }, tokenKey, { expiresIn: 60 * 24 });
+        let token = jwt.sign({ id: user.id }, tokenKey, { expiresIn: 60 * 600 });
         res.json({ success: true, token }).status(200);
     }
     catch (err){
