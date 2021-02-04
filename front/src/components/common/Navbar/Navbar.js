@@ -1,9 +1,17 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { userLogoutAC } from '../../../store/actions/logout.actions';
 
 
 function NavBar() {
 
+  const dispatch = useDispatch()
+  const user = localStorage.getItem('jwt')
+  const userLogout = () => {
+  dispatch(userLogoutAC())
+  localStorage.removeItem('jwt')
+  }
 
   return (
     <>
@@ -13,6 +21,7 @@ function NavBar() {
           <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/signup">Sign Up</Nav.Link>
         </Nav>
+        {user ? <Button onClick={userLogout} variant="light">Log out</Button> : null}
       </Navbar>
 
     </>
