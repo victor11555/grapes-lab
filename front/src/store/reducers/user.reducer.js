@@ -1,4 +1,4 @@
-import {ADD_PROJECT, ADD_USER, ADD_USER, USER_LOGOUT} from "../types";
+import {ADD_PROJECT, ADD_USER, USER_LOGOUT} from "../types";
 
 export const userReducer = (state = {}, action) => {
     switch (action.type) {
@@ -10,7 +10,7 @@ export const userReducer = (state = {}, action) => {
             return { ...state, user: {}, isLogged: false }
 
         case ADD_PROJECT:
-            return {...user, projects: [...user.projects, action.payload]}
+            return {...state, projects: [...state.projects, action.payload]}
 
         default:
             return state;

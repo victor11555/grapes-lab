@@ -14,3 +14,7 @@ footer {
 footer p {
     margin: 0;
 }
+
+.empty {
+    height: 60px;
+}

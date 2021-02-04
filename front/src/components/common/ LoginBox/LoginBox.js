@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { userLoginAC } from '../../../store/actions/login.actions';
-
+import './Login.css'
 function LoginBox(props) {
 
   const dispatch = useDispatch()
@@ -17,6 +17,7 @@ function LoginBox(props) {
 
   return (
     <Container>
+      <div className={'login-form'}>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -29,10 +30,11 @@ function LoginBox(props) {
           <Form.Label>Password</Form.Label>
           <Form.Control  name={'password'}type="password" placeholder="Password" />
         </Form.Group>
-        <Button name={'loginUpBtn'} variant="primary" type="submit">
+        <Button name={'loginUpBtn'} variant="dark" type="submit">
           Login
         </Button>
       </Form>
+      </div>
     </Container>
   );
 }
