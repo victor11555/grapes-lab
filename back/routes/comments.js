@@ -18,7 +18,9 @@ router.post('/',async (req,res)=>{
     text,
     author:id,
   })
-  comment.push(projectID)
+  let project = await Project.findById(projectID)
+  project.comments.push(comment)
+  await project.save()
   await comment.save()
   res.json({ success :true,comment})
 

@@ -18,7 +18,8 @@ const projectSchema = new mongoose.Schema({
   additionalNeeds: { type: String, required: true },
   team: [{type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}],
   moderating: { type: Boolean, required: true, default: false },
-  rating: { type: Number, required: true, default: 0 }
+  rating: { type: Number, required: true, default: 0 },
+  comments:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}]
 });
 
 module.exports = mongoose.model('Project', projectSchema);
