@@ -2,6 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const tokenKey = '1a2b-3c4d-5e6f-7g8h';
+const User = require('../models/user')
 
 const Project = require('../models/project');
 
@@ -12,12 +13,13 @@ router.get('/', async (req, res) =>{
 
 router.post('/', async (req, res, next) => {
   const { token } = req.body;
+  console.log(token);
   let data = jwt.verify(token, tokenKey, (err, decoded) => {
     if (err) res.json({ success: false, message: 'token expired' });
     return decoded;
   });
   const { id } = data;
-  let user = await User.findOne({ _id: id });
+  let user = await User.findOne({ _id:id });
   const {
     status,
     concept,
