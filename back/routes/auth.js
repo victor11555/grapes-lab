@@ -36,7 +36,7 @@ router.post('/login', async (req, res, next) => {
     try{
     let user = await User.findOne({email})
     if (user && (await bcrypt.compare(password, user.password))) {
-        let token = await jwt.sign({id: user._id }, tokenKey, {expiresIn: 60 * 24});
+        let token = await jwt.sign({id: user._id }, tokenKey, {expiresIn: 60 * 600});
         res.json({success: true, token});
     }
     if (user) {
@@ -58,7 +58,7 @@ router.post('/signup', async (req, res, next) => {
         if (await User.findOne({ email })) {
             res.json({ success: false, message: 'Such user already exists' });
         }
-        if(role!==0) {
+        if(role!=='User') {
             if (secret && secret !== secretKey) {
                 res.json({ success: false, message: 'Wrong Secret Key' })
             }
