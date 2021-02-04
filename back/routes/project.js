@@ -32,7 +32,7 @@ router.post('/', async (req, res, next) => {
     acceptableOutcome,
     needPrototype,
     additionalNeeds,
-    team,
+    private,
   } = req.body;
   try {
     let prototypeText = null;
@@ -53,7 +53,7 @@ router.post('/', async (req, res, next) => {
       needPrototype,
       prototypeText,
       additionalNeeds,
-      team,
+      private
     });
     await project.save();
     user.projects.push(project._id);
