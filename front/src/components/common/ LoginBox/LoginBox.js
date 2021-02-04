@@ -27,7 +27,7 @@ function LoginBox(props) {
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control  name={'password'}type="password" placeholder="Password" />
         </Form.Group>
         <Button name={'loginUpBtn'} variant="primary" type="submit">
           Login

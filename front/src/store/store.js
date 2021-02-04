@@ -9,4 +9,4 @@ const sagaMiddleware = CreateSagaMiddleware();
 export const store = createStore(rootReducer,
     composeWithDevTools(applyMiddleware(sagaMiddleware)));
 
-sagaMiddleware(rootWatcher);
+sagaMiddleware.run(rootWatcher);

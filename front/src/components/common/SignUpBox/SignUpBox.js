@@ -6,6 +6,7 @@ function SignUpBox() {
   const dispatch = useDispatch()
   const submitHandler = (e) => {
     e.preventDefault()
+
     const {
       name : {value: name},
       email : { value : email},
@@ -13,21 +14,25 @@ function SignUpBox() {
       phone : { value : phone},
       company : { value : company},
       role : { value : role},
-      secret : { value : secret},
     } = e.target
-    dispatch(userSignupAC({name, email, password, phone, company, role, secret}))
+    if(select) {
+      const {secret: {value: secret }} = e.target;
+      dispatch(userSignupAC({ name, email, password, phone, company, role, secret }))
+    } else {
+      dispatch(userSignupAC({ name, email, password, phone, company, role }))
+    }
   }
   const secretKey = <Form.Group  controlId="secretKey">
     <Form.Label>Secret key</Form.Label>
     <Form.Control name={'secret'} type="password" placeholder="Secret key" />
   </Form.Group>
+
   const [select, setSelect] = useState(false)
   const viewSecretKey = (e) => {
     if(e.target.value == 'User'){
         setSelect(false)
     } else {
       setSelect(true)
-
     }
   }
 
