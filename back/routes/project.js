@@ -94,4 +94,17 @@ router.post('/like',async(req,res)=>{
 
 })
 
+router.get('/all',async(req,res)=>{
+  try {
+    let allProjects = await Project.find()
+      .populate('author')
+      .populate('comments')
+      .populate('team')
+    res.json({ success: true, allProjects })
+  }
+  catch (err){
+    res.json({success:false,message:err.message})
+  }
+})
+
 module.exports = router;
