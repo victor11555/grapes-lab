@@ -36,7 +36,7 @@ const projects = useSelector(state => state.user.project)
 	return (
 		<div>
 			<StepProgressBar
-				startingStep={3}
+				startingStep={3}// what now
 				onSubmit={onFormSubmit}
 				steps={[
 					{

@@ -7,4 +7,4 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const CREATE_PROJECT = 'CREATE_PROJECT';
 export const ADD_PROJECT = 'ADD_PROJECT';
 export const ADD_PDF = 'ADD_PDF';
-
+export const GET_ALL_PROJECTS = 'GET_ALL_PROJECTS';
