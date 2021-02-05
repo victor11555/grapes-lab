@@ -10,6 +10,7 @@ import {getProfileAC} from './store/actions/getProfile.actions';
 import Footer from './components/common/Footer/Footer';
 import CabinetPage from './pages/CabinetPage/CabinetPage';
 import ProjectPage from './pages/ProjectPage/ProjectPage';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
 	const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
 		<div className='App'>
 			<NavBar/>
 			<Switch>
+				<Route exact path='/' component={ Dashboard }/>
 				<Route exact path='/login' component={ Login }/>
 				<Route exact path='/signup' component={ SignUp }/>
 				<Route path='/cabinet' component={ CabinetPage }/>
