@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProjectsAC } from '../../../store/actions/project.actions';
+import { initAllProjectsAC } from '../../../store/actions/project.actions';
 
 function ProjectList(props) {
 	const dispatch = useDispatch()
 	useEffect(()=>{
-		dispatch(getAllProjectsAC())
+		dispatch(initAllProjectsAC([]))
 	}, [])
-	const projects = useSelector(store => store.projects);
 
+	const projects = useSelector(store => store.projects);
 	return (
 		<div>
 
-			{ projects && projects.map(project => <ProjectCard key={ project.id } project={ project }/>) }
+			{ projects && projects.map(project => <ProjectCard key={ project._id } project={ project }/>) }
 
 		</div>
 	);

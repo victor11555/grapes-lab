@@ -14,7 +14,7 @@ function ProjectCard({project}) {
 			<Card>
 				<Card.Body>
 					<Card.Title>{ project.projectName }</Card.Title>
-					<Card.Subtitle className="mb-2 text-muted">{ project.author }</Card.Subtitle>
+					<Card.Subtitle className="mb-2 text-muted">{ project.author.name }</Card.Subtitle>
 					<Card.Text>
 						{ project.concept }
 					</Card.Text>

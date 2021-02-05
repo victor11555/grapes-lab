@@ -13,22 +13,11 @@ async function RequestLogin(payload) {
     return await response.json()
 }
 
-function sleep(mil) {
-    let start = new Date();
-    let tmp = new Date()
-    while(tmp - start < mil){
-        tmp =new Date( )
-    }
-}
-
 function* loginWorker({payload}) {
     const response = yield call(RequestLogin, payload);
     if (response.success) {
-        // console.log(response);
-        // yield
         localStorage.setItem('jwt', JSON.stringify(response.token))
         yield put(getProfileAC({ token:response.token }));
-
     }
     else yield put(addErrorAC(response.message));
 }
