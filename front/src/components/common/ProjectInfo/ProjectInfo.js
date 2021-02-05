@@ -21,6 +21,7 @@ function ProjectInfo({project}) {
 
 				<RoadMap/>
 
+				<Link> </Link>
 
 				<Button variant="primary">Связаться с ...</Button>{ ' ' }
 				<Button variant="primary">Импорт в PDF</Button>
