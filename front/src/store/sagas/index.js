@@ -3,7 +3,8 @@ import {loginWatcher} from './login.saga';
 import {signupWatcher} from "./signup.saga";
 import {getProfileWatcher} from "./getProfile.saga";
 import {createProjectWatcher} from "./createProject.saga";
+import { pdfWatcher } from './pdf.saga';
 
 export function* rootWatcher() {
-    yield all([loginWatcher(), signupWatcher(), getProfileWatcher(), createProjectWatcher()]);
+    yield all([loginWatcher(), signupWatcher(), getProfileWatcher(), createProjectWatcher(), pdfWatcher()]);
 }

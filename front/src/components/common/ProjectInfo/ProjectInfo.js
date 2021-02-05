@@ -3,8 +3,12 @@ import Button from 'react-bootstrap/Button';
 import {Container} from 'react-bootstrap';
 import CommentList from '../CommentList/CommentList';
 import RoadMap from '../RoadMap/RoadMap';
+import {useDispatch, useSelector} from "react-redux";
+import {addPdfAC} from "../../../store/actions/pdf.actions";
 
 function ProjectInfo({project}) {
+  const dispatch = useDispatch();
+  
 	return (
 		<div>
 
@@ -20,14 +24,15 @@ function ProjectInfo({project}) {
 				<CommentList/>
 
 				<RoadMap/>
+    
+    <Button variant="primary">Связаться с ...</Button>{' '}
+                <Button onClick={() => dispatch(addPdfAC(project))}
+                        variant="primary">Импорт в PDF</Button>
+                
+            </Container>
 
-
-				<Button variant="primary">Связаться с ...</Button>{ ' ' }
-				<Button variant="primary">Импорт в PDF</Button>
-			</Container>
-
-		</div>
-	);
+        </div>
+    );
 }
 
 export default ProjectInfo;

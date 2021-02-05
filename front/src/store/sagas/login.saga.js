@@ -15,7 +15,7 @@ async function RequestLogin(payload) {
 function* loginWorker({payload}) {
     const response = yield call(RequestLogin, payload);
     if (response.success) yield localStorage.setItem('jwt', JSON.stringify(response.token))
-    yield put(addErrorAC(response.message));
+    else yield put(addErrorAC(response.message));
 }
 
 export function* loginWatcher() {
