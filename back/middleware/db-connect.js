@@ -5,6 +5,7 @@ const dbConnect = () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false,
   });
 };
 

@@ -15,7 +15,7 @@ router.post('/', async (req, res, next) => {
 
 router.post('/edit', async (req, res, next) => {
     const { token, name, email, phone, company, password } = req.body;
-    jwt.verify(token, tokenKey, async (err, decoded) => {
+    await jwt.verify(token, tokenKey, async (err, decoded) => {
         if (err) {
             res.json({ success: false, message: 'token expired' });
         } else {
