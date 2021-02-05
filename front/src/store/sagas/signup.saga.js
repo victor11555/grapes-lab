@@ -15,7 +15,7 @@ async function RequestSignup(payload) {
 function* signupWorker({payload}) {
     const response = yield call(RequestSignup, payload);
     if (response.success) yield localStorage.setItem('jwt', JSON.stringify(response.token))
-    yield put(addErrorAC(response.message));
+    else yield put(addErrorAC(response.message));
 }
 
 export function* signupWatcher() {
