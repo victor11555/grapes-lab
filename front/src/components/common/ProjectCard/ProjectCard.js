@@ -5,6 +5,7 @@ import {Button} from 'react-bootstrap';
 import {useHistory} from 'react-router';
 
 import './ProjectCard.css'
+import CommentList from '../CommentList/CommentList';
 
 function ProjectCard({project}) {
 
@@ -27,7 +28,7 @@ function ProjectCard({project}) {
 					<small className="text-muted">
 						<Vote/>
 					</small>
-					<Button onClick={ () => {
+					<Button className={'btn btn-dark'} onClick={ () => {
 						history.push('/project');
 					} }>Show more...</Button>
 				</Card.Footer>
