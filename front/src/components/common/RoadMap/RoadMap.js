@@ -19,8 +19,6 @@ function RoadMap(props) {
       next[0].style.display = 'none';
     }
   }, []);
-  // previous.style.display = 'none'
-  // setup step validators, will be called before proceeding to the next step
   function step2Validator() {
 
   }
