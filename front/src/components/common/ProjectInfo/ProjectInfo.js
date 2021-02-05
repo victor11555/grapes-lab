@@ -10,10 +10,9 @@ function ProjectInfo({project}) {
 	const dispatch = useDispatch();
 
 	return (
-		<div>
 
 			<Container>
-			<p>	Author: { project.author }</p>
+			<p>Author: { project.author }</p>
 				<p>Rating: { project.rating }</p>
 				<p>Status: { project.status }</p>
 				<p>Project Name: { project.projectName }</p>
@@ -23,12 +22,12 @@ function ProjectInfo({project}) {
 				<RoadMap/>
 
 				<Button variant="primary">Связаться с ...</Button>{ ' ' }
+
 				<Button onClick={ () => dispatch(addPdfAC(project)) }
 								variant="primary">Импорт в PDF</Button>
 
 			</Container>
 
-		</div>
 	);
 }
 

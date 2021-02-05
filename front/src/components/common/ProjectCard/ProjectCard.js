@@ -3,7 +3,8 @@ import Card from 'react-bootstrap/Card';
 import Vote from '../Vote/Vote';
 import {Button} from 'react-bootstrap';
 import {useHistory} from 'react-router';
-import s from './projectcard.module.css'
+
+import './ProjectCard.css'
 
 function ProjectCard({project}) {
 
@@ -12,7 +13,7 @@ function ProjectCard({project}) {
 	return (
 		<div>
 
-			<Card>
+			<Card className={'card'}>
 				<Card.Body>
 					<Card.Title>{ project.projectName }</Card.Title>
 					<Card.Subtitle className="mb-2  text-muted">{ project.author.name }</Card.Subtitle>

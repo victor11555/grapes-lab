@@ -8,7 +8,7 @@ function ProjectFilter(props) {
 			<Form>
 				<Form.Row>
 					<Form.Group controlId="formGridState">
-						<Form.Label>State</Form.Label>
+						{/*<Form.Label>State</Form.Label>*/}
 						<Form.Control as="select" defaultValue="Choose...">
 							<option>Отсортировать по:</option>
 							<option>рейтингу</option>
