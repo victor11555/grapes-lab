@@ -22,3 +22,5 @@ function* getProfileWorker({payload}) {
 export function* getProfileWatcher() {
     yield takeEvery(GET_PROFILE, getProfileWorker)
 }
+
+

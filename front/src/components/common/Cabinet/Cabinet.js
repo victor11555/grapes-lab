@@ -14,15 +14,16 @@ function Cabinet(props) {
 				<h1>
 					<Badge center variant="secondary">Личный кабинет</Badge>
 				</h1>
+				{user?
 				<Card style={{ width: '22rem' }}>
 					<Card.Header>{user.name}</Card.Header>
 					<ListGroup variant="flush">
 						<ListGroup.Item>Телефон для связи: {user.phone}</ListGroup.Item>
 						<ListGroup.Item>Email: {user.email}</ListGroup.Item>
 					</ListGroup>
-				</Card>
+				</Card>:null}
 				<Button  onClick={ () => setState(!state) }>Добавить проект</Button>
-				{ state ? <CreateProjectForm/> : null }
+				{ state ? <CreateProjectForm /> : null }
 			</Container>
 	);
 };
