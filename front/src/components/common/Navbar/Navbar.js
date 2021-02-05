@@ -15,7 +15,7 @@ function NavBar() {
     localStorage.removeItem('jwt')
     history.push('/')
   }
-  const dropdown =   <Dropdown drop='left' className='dropdown'>
+  const dropdown = <Dropdown drop='left' className='dropdown'>
     <Dropdown.Toggle variant="dark" id="dropdown-button-drop-left"> Profile </Dropdown.Toggle>
     <Dropdown.Menu className='dark'>
       <Dropdown.Item as={Link} to = "/">Action</Dropdown.Item>
@@ -33,7 +33,15 @@ function NavBar() {
           {!user ? <Nav.Link as={Link} to = "/login">Login</Nav.Link> : null }
           {!user ? <Nav.Link as={Link} to = "/signup">Sign Up</Nav.Link> : null }
         </Nav>
-        {user ? {dropdown} : null}
+        {user ? <Dropdown drop='left' className='dropdown'>
+          <Dropdown.Toggle variant="dark" id="dropdown-button-drop-left"> Profile </Dropdown.Toggle>
+          <Dropdown.Menu className='dark'>
+            <Dropdown.Item as={Link} to = "/">Action</Dropdown.Item>
+            <Dropdown.Item as={Link} to = "/">Another action</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={userLogout} as={Link} to = "/">Log out</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown> : null}
       </Navbar>
 
     </>

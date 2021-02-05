@@ -11,7 +11,7 @@ function Dashboard(props) {
 		<div>
 
 			<ProjectFilter/>
-			<ProjectList/>
+			{/*<ProjectList/>*/}
 
 		</div>
 	);
