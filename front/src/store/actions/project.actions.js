@@ -1,5 +1,5 @@
 
-import {ADD_PROJECT, CREATE_PROJECT, GET_ALL_PROJECTS} from "../types";
+import {INIT_ALL_PROJECTS, CREATE_PROJECT, GET_ALL_PROJECTS} from "../types";
 
 
 export const createProjectAC = (payload) => ({
@@ -7,12 +7,12 @@ export const createProjectAC = (payload) => ({
     payload
 })
 
-export const getAllProjecstAC = (payload) => ({
+export const getAllProjectsAC = (payload) => ({
     type:  GET_ALL_PROJECTS,
     payload
 })
 
-export const addProjectAC = (payload) => ({
-    type: ADD_PROJECT,
+export const initAllProjectsAC = (payload) => ({
+    type: INIT_ALL_PROJECTS,
     payload
 })
