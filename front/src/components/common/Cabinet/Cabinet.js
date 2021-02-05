@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
+import CreateProjectForm from '../CreateProjectForm/CreateProjectForm';
 
 function Cabinet(props) {
 
@@ -7,10 +8,9 @@ function Cabinet(props) {
 
 	return (
 		<div>
-
-			<Button onClick={ setState(!state) }>Добавить проект</Button>
-
-
+			Other informations... <br/>
+			<Button onClick={ ()=> setState(!state) }>Добавить проект</Button>
+			{ state ? <CreateProjectForm/> : null }
 		</div>
 	);
 };

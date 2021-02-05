@@ -17,10 +17,10 @@ router.post('/', async (req, res) => {
         })
     try {
         const { id } = data;
-        let userFromDB = await User.findOne({ _id: id })
-        let {name,email,phone,company,role} = userFromDB
+        let userFromDB = await User.findOne({ _id: id }).populate('projects')
+        let {name,email,phone,company,role, projects} = userFromDB
         if (userFromDB) {
-            res.json({ success: true, user:{name,email,phone,company,role} });
+            res.json({ success: true, user:{name,email,phone,company,role, projects} });
         } else {
             res.json({ success: false, message: 'no such user' });
         }
