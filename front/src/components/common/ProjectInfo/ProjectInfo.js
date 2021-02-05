@@ -6,6 +6,7 @@ import RoadMap from '../RoadMap/RoadMap';
 import {useDispatch, useSelector} from "react-redux";
 import {addPdfAC} from "../../../store/actions/pdf.actions";
 
+
 function ProjectInfo({id, author, projectName, concept, rating, status}) {
 
 	const project = useSelector(state => state.user.project[0])

@@ -1,13 +1,30 @@
-import React from 'react';
+import "react-step-progress-bar/styles.css";
+import {ProgressBar, Step} from "react-step-progress-bar";
 
-function RoadMap(props) {
+function RoadMap() {
 	return (
-		<div>
-
-			THIS IS ROADMAP
-
-		</div>
-	);
+		<ProgressBar percent={25}>
+			<Step>
+				{({accomplished, index}) => (
+					<div className={`indexedStep ${accomplished ? "accomplished" : ""}`}>
+						{index + 1}
+					</div>
+				)}
+			</Step>
+			<Step>
+				{({accomplished, index}) => (
+					<div className={`indexedStep ${accomplished ? "accomplished" : ""}`}>
+						{index + 1}
+					</div>
+				)}
+			</Step>
+			<Step>
+				{({accomplished, index}) => (
+					<div className={`indexedStep ${accomplished ? "accomplished" : ""}`}>
+						{index + 1}
+					</div>
+				)}
+			</Step>
+		</ProgressBar>
+	)
 }
-
-export default RoadMap;
