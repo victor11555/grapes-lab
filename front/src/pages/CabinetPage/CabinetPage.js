@@ -1,15 +1,16 @@
 import React from 'react';
-import Cabinet from '../../components/common/Cabinet/Cabinet';
+import {useSelector} from "react-redux";
 
 
 function CabinetPage(props) {
-	return (
-		<div>
+    const role = useSelector(state => state.user.role)
 
-		<Cabinet/>
+    return (
+        <>
 
-		</div>
-	);
+
+</>
+);
 }
 
 export default CabinetPage;

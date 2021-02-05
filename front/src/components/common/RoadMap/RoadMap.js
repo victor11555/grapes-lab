@@ -1,7 +1,7 @@
 import "react-step-progress-bar/styles.css";
 import {ProgressBar, Step} from "react-step-progress-bar";
 
-function RoadMap() {
+export default function RoadMap() {
 	return (
 		<ProgressBar percent={25}>
 			<Step>
