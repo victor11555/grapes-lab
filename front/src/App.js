@@ -11,7 +11,7 @@ import Footer from './components/common/Footer/Footer';
 import CabinetPage from './pages/CabinetPage/CabinetPage';
 import ProjectPage from './pages/ProjectPage/ProjectPage';
 import Dashboard from './pages/Dashboard/Dashboard';
-
+import EditProfile from './components/common/EditProfile/EditProfile';
 function App() {
 	const dispatch = useDispatch();
 
@@ -27,6 +27,7 @@ function App() {
 				<Route exact path='/' component={ Dashboard }/>
 				<Route exact path='/login' component={ Login }/>
 				<Route exact path='/signup' component={ SignUp }/>
+				<Route exact path='/editprofile' component={ EditProfile }/>
 				<Route path='/cabinet' component={ CabinetPage }/>
 				<Route path='/project' component={ ProjectPage }/>
 			</Switch>
