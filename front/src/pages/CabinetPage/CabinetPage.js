@@ -3,6 +3,7 @@ import Cabinet from '../../components/common/Cabinet/Cabinet';
 
 
 function CabinetPage(props) {
+
 	return (
 		<div>
 

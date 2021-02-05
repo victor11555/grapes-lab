@@ -2,10 +2,12 @@ import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { userLoginAC } from '../../../store/actions/login.actions';
+import { useHistory } from "react-router-dom";
 import './Login.css'
-function LoginBox(props) {
 
+function LoginBox(props) {
   const dispatch = useDispatch()
+  const history = useHistory()
   const submitHandler = (e) => {
     e.preventDefault()
     const {
@@ -13,6 +15,7 @@ function LoginBox(props) {
       password : {value: password}
     } = e.target
     dispatch(userLoginAC({email, password}))
+    history.push('/')
   }
 
   return (

@@ -1,6 +1,6 @@
 
 .signup-form {
-    margin: auto;
+    margin: 20px auto;
     width: 400px;
     min-height: 400px;
     padding: 20px;
@@ -11,11 +11,8 @@
 
 .signupImg {
 
-    background-image: url("https://image.freepik.com/free-photo/group-of-diverse-people-having-a-business-meeting_53876-25060.jpg");
-    background-color: rgba(255, 0, 0, 0.2);
     background-repeat: no-repeat;
     background-size: 100%;
     filter: alpha(Opacity=50);
-    opacity: 0.5;
     height: 80vh;
 }
