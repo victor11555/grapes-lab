@@ -6,7 +6,7 @@ export const userReducer = (state = {}, action) => {
 
 			return {...action.payload, isLogged: true};
 		case USER_LOGOUT:
-			return {...state, user: {}, isLogged: false};
+			return state = []
 
 		case ADD_PROJECT:
 			return {...state, projects: [...state.projects, action.payload]};
