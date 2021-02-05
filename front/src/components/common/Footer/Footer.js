@@ -3,6 +3,7 @@ import './Footer.css'
 function Footer(props) {
   return (
     <div>
+      <div className={'empty'}></div>
       <footer>
           <p>&copy; Виноградный жмых</p>
       </footer>
