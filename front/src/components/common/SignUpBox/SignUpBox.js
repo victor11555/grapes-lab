@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { userSignupAC } from '../../../store/actions/signup.actions'
+import { useHistory } from "react-router-dom";
 import './signUp.css'
 
 function SignUpBox() {
+  const history = useHistory()
   const dispatch = useDispatch()
   const submitHandler = (e) => {
     e.preventDefault()
@@ -23,6 +25,7 @@ function SignUpBox() {
     } else {
       dispatch(userSignupAC({ name, email, password, phone, company, role }))
     }
+    history.push('/')
   }
   const secretKey = <Form.Group  controlId="secretKey">
     <Form.Label>Secret key</Form.Label>
