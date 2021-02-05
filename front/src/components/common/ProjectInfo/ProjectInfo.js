@@ -20,7 +20,6 @@ function ProjectInfo({project}) {
 				Project Name: { project.projectName }
 				Concept: { project.concept }
 
-
 				<CommentList/>
 
 				<RoadMap/>
