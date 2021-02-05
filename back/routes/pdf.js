@@ -42,8 +42,8 @@ router.post('/', async (req, res) => {
       subject: `${projectResult}`,
       keywords: `${needs} ${basis}`,
     },
-    header: 'this is our header',
-    footer: 'this is our footer',
+    header: 'header',
+    footer: 'footer',
     content: [
       {
         table: {

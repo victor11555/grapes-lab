@@ -2,7 +2,12 @@ import React from 'react';
 import style from './Vote.module.css';
 
 function Vote(props) {
+	function changeHandler(e){
+		e.preventDefault();
+		console.log(e.target);
+	}
 	return (
+		<form onChange={(e)=>changeHandler(e)}>
 		<div className={ style.rating }>
 			<input type="radio" name="rating" value="5" id="5"/>
 			<label htmlFor="5">☆</label>
@@ -15,6 +20,7 @@ function Vote(props) {
 			<input type="radio" name="rating" value="1" id="1"/>
 			<label htmlFor="1">☆</label>
 		</div>
+		</form>
 	);
 }
 
