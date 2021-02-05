@@ -9,10 +9,6 @@ function Dashboard(props) {
 			<ProjectFilter/>
 			<ProjectList/>
 
-
-
-
-
 		</div>
 	);
 }
