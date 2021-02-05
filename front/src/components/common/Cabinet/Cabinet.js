@@ -1,20 +1,29 @@
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import CreateProjectForm from '../CreateProjectForm/CreateProjectForm';
-import {Container} from 'react-bootstrap';
+import {Container,ListGroup,Card,Badge} from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
 function Cabinet(props) {
 
 	const [state, setState] = useState(false);
+	const user = useSelector(state=>state.user)
 
 	return (
-		<div>
-			<Container>
-				Other informations... <br/>
-				<Button onClick={ () => setState(!state) }>Добавить проект</Button>
+			<Container >
+				<h1>
+					<Badge center variant="secondary">Личный кабинет</Badge>
+				</h1>
+				<Card style={{ width: '22rem' }}>
+					<Card.Header>{user.name}</Card.Header>
+					<ListGroup variant="flush">
+						<ListGroup.Item>Телефон для связи: {user.phone}</ListGroup.Item>
+						<ListGroup.Item>Email: {user.email}</ListGroup.Item>
+					</ListGroup>
+				</Card>
+				<Button  onClick={ () => setState(!state) }>Добавить проект</Button>
 				{ state ? <CreateProjectForm/> : null }
 			</Container>
-		</div>
 	);
 };
 
