@@ -9,9 +9,11 @@ import {useDispatch} from 'react-redux';
 import {getProfileAC} from './store/actions/getProfile.actions';
 import Footer from './components/common/Footer/Footer';
 import CabinetPage from './pages/CabinetPage/CabinetPage';
+import ProjectPage from './pages/ProjectPage/ProjectPage';
 
 function App() {
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		const token = JSON.parse(localStorage.getItem('jwt'));
 		dispatch(getProfileAC({token}));
@@ -24,6 +26,7 @@ function App() {
 				<Route exact path='/login' component={ Login }/>
 				<Route exact path='/signup' component={ SignUp }/>
 				<Route path='/cabinet' component={ CabinetPage }/>
+				<Route path='/project' component={ ProjectPage }/>
 			</Switch>
 			<Footer/>
 		</div>

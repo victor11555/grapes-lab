@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import {Container} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import CommentList from '../CommentList/CommentList';
 import RoadMap from '../RoadMap/RoadMap';
 import {useDispatch, useSelector} from 'react-redux';
@@ -13,13 +13,11 @@ function ProjectInfo({project}) {
 		<div>
 
 			<Container>
-
 				Author: { project.author }
 				Rating: { project.rating }
 				Status: { project.status }
 				Project Name: { project.projectName }
 				Concept: { project.concept }
-
 				<CommentList/>
 
 				<RoadMap/>
@@ -32,7 +30,6 @@ function ProjectInfo({project}) {
 
 		</div>
 	);
-
 }
 
 export default ProjectInfo;
