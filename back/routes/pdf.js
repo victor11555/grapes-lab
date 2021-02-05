@@ -65,7 +65,8 @@ router.post('/', async (req, res) => {
   let write = fs.createWriteStream('./document.pdf');
   pdfDoc.pipe(write);
   write.on('finish', () => {
-    res.download(path.join(__dirname, '../document.pdf'));//.end
+    res.download(path.join(__dirname, '../document.pdf')).end()
+
   });
   pdfDoc.end();
 });
