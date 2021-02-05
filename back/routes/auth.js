@@ -54,33 +54,39 @@ router.post('/signup', async (req, res, next) => {
   if (await User.findOne({ email })) {
     res.json({ success: false, message: 'Such user already exists' });
   }
-  if (role !== 'User') {
-    if (secret && secret !== secretKey) {
-      res.json({ success: false, message: 'Wrong Secret Key' });
+  try {
+    if (role !== 'User') {
+      if (secret && secret !== secretKey) {
+        res.json({ success: false, message: 'Wrong Secret Key' });
+      } else {
+        let user = await new User({
+          name,
+          email,
+          password: await bcrypt.hash(password, saltRounds),
+          phone,
+          role,
+          company,
+        });
+        await user.save();
+        let token = jwt.sign({ id: user._id }, tokenKey, { expiresIn: 60 * 600 });
+        res.json({ success: true, token }).status(200);
+      }
     } else {
+
       let user = await new User({
         name,
         email,
         password: await bcrypt.hash(password, saltRounds),
         phone,
-        role,
         company,
       });
       await user.save();
       let token = jwt.sign({ id: user._id }, tokenKey, { expiresIn: 60 * 600 });
       res.json({ success: true, token }).status(200);
     }
-  } else {
-    let user = await new User({
-      name,
-      email,
-      password: await bcrypt.hash(password, saltRounds),
-      phone,
-      company,
-    });
-    await user.save();
-    let token = jwt.sign({ id: user._id }, tokenKey, { expiresIn: 60 * 600 });
-    res.json({ success: true, token }).status(200);
+  }
+  catch (err){
+    res.json({success:false,message:err.message})
   }
 });
 

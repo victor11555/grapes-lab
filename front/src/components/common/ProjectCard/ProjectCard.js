@@ -2,8 +2,11 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Vote from '../Vote/Vote';
 import {Button} from 'react-bootstrap';
+import {useHistory} from 'react-router';
 
 function ProjectCard({project}) {
+
+	const history = useHistory();
 
 	return (
 		<div>
@@ -23,6 +26,7 @@ function ProjectCard({project}) {
 						<Vote/>
 					</small>
 					<Button onClick={ () => {
+						history.push('/project');
 					} }>Show more...</Button>
 				</Card.Footer>
 			</Card>
