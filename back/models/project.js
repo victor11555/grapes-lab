@@ -18,7 +18,7 @@ const projectSchema = new mongoose.Schema({
   team: [{type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}],
   moderating: { type: Boolean, required: true, default: false },
   rating: { type: Number, required: true, default: 0 },
-  status: { type: String, required: true },
+  status: { type: String},
   comments:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
