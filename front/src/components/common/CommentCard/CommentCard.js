@@ -3,7 +3,7 @@ import React from 'react';
 function CommentCard({id}) {
 	return (
 		<div>
-			Мапим комментари
+			Мапим комментарии))
 		</div>
 	);
 }

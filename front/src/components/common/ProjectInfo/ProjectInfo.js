@@ -4,19 +4,21 @@ import {Container} from 'react-bootstrap';
 import CommentList from '../CommentList/CommentList';
 import RoadMap from '../RoadMap/RoadMap';
 
-function ProjectInfo({id, author, projectName, concept, rating, status}) {
+function ProjectInfo({project}) {
 	return (
 		<div>
 
 			<Container>
-				MAP:
-				ProjectName
-				Author
-				Concept
-				Rating
-				Status
+
+				Author: { project.author }
+				Rating: { project.rating }
+				Status: { project.status }
+				Project Name: { project.projectName }
+				Concept: { project.concept }
+
 
 				<CommentList/>
+
 				<RoadMap/>
 
 
