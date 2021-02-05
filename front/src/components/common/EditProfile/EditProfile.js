@@ -1,16 +1,19 @@
 import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { editProfileAC } from '../../../store/actions/user.actions';
 
 function EditProfile() {
   let user = useSelector(state=>state.user)
+  const history = useHistory();
   const dispatch = useDispatch()
   const submitHandler = (e) =>{
     e.preventDefault()
-    const token = localStorage.getItem('jwt')
+    const token = JSON.parse(localStorage.getItem('jwt'))
     const {name:{value:name},email:{value:email},password:{value:password},phone:{value:phone},company:{value:company}} = e.target
     dispatch(editProfileAC({token,name,email,password,phone,company}))
+    history.push('/cabinet');
   }
   return (
     <div>
