@@ -69,3 +69,5 @@ router.post('/', async (req, res) => {
   });
   pdfDoc.end();
 });
+
+module.exports = router;
