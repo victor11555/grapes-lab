@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { userLoginAC } from '../../../store/actions/login.actions';
 import { useHistory } from "react-router-dom";
 import './Login.css'
+import { getProfileAC } from '../../../store/actions/getProfile.actions';
 
 function LoginBox(props) {
   const dispatch = useDispatch()
@@ -14,6 +15,8 @@ function LoginBox(props) {
       password : {value: password}
     } = e.target
     dispatch(userLoginAC({email, password}))
+    const token = localStorage.getItem('jwt')
+    dispatch(getProfileAC(token))
   }
 
   return (
