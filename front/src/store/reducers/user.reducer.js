@@ -5,7 +5,6 @@ export const userReducer = (state = {}, action) => {
 		case ADD_USER:
 
 			return {...action.payload, isLogged: true};
-
 		case USER_LOGOUT:
 			return state = []
 
