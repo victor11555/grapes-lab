@@ -11,6 +11,7 @@ function Cabinet(props) {
 			Other informations... <br/>
 			<Button onClick={ ()=> setState(!state) }>Добавить проект</Button>
 			{ state ? <CreateProjectForm/> : null }
+
 		</div>
 	);
 };

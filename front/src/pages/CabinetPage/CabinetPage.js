@@ -1,5 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
+import Cabinet from "../../components/common/Cabinet/Cabinet";
 
 
 function CabinetPage(props) {
@@ -7,10 +8,10 @@ function CabinetPage(props) {
 
     return (
         <>
+            <Cabinet/>
 
-
-</>
-);
+        </>
+    );
 }
 
 export default CabinetPage;
