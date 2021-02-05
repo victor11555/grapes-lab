@@ -16,9 +16,7 @@ async function RequestCreateProject(payload) {
 }
 
 function* createProjectWorker({payload}) {
-    console.log('worker');
     const response = yield call(RequestCreateProject, payload);
-    console.log(response);
     if (response.success) yield put(addProjectAC(response.project))
     else yield put(addErrorAC(response.message));
 }
