@@ -13,6 +13,7 @@ import ProjectPage from './pages/ProjectPage/ProjectPage';
 
 function App() {
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		const token = JSON.parse(localStorage.getItem('jwt'));
 		dispatch(getProfileAC({token}));
