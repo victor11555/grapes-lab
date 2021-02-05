@@ -15,15 +15,6 @@ function NavBar() {
     localStorage.removeItem('jwt')
     history.push('/')
   }
-  const dropdown = <Dropdown drop='left' className='dropdown'>
-    <Dropdown.Toggle variant="dark" id="dropdown-button-drop-left"> Profile </Dropdown.Toggle>
-    <Dropdown.Menu className='dark'>
-      <Dropdown.Item as={Link} to = "/">Action</Dropdown.Item>
-      <Dropdown.Item as={Link} to = "/">Another action</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item onClick={userLogout} as={Link} to = "/">Log out</Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
 
   return (
     <>
@@ -34,10 +25,10 @@ function NavBar() {
           {!user ? <Nav.Link as={Link} to = "/signup">Sign Up</Nav.Link> : null }
         </Nav>
         {user ? <Dropdown drop='left' className='dropdown'>
-          <Dropdown.Toggle variant="dark" id="dropdown-button-drop-left"> Profile </Dropdown.Toggle>
+          <Dropdown.Toggle variant="dark" id="dropdown-button-drop-left"> {user} <i className="bi bi-person-badge"></i> </Dropdown.Toggle>
           <Dropdown.Menu className='dark'>
-            <Dropdown.Item as={Link} to = "/">Action</Dropdown.Item>
-            <Dropdown.Item as={Link} to = "/">Another action</Dropdown.Item>
+            <Dropdown.Item as={Link} to = "/cabinet">Profile</Dropdown.Item>
+            <Dropdown.Item as={Link} to = "/editprofile">Edit profile</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={userLogout} as={Link} to = "/">Log out</Dropdown.Item>
           </Dropdown.Menu>
