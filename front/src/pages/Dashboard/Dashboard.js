@@ -9,9 +9,8 @@ function Dashboard(props) {
 
 	return (
 		<div>
-
 			<ProjectFilter/>
-			{/*<ProjectList/>*/}
+			<ProjectList/>
 
 		</div>
 	);

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProjectCard from '../ProjectCard/ProjectCard';
-import {useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllProjectsAC } from '../../../store/actions/project.actions';
 
 function ProjectList(props) {
-
-	const projects = useSelector(store => store.user.projects);
+	const dispatch = useDispatch()
+	useEffect(()=>{
+		dispatch(getAllProjectsAC())
+	}, [])
+	const projects = useSelector(store => store.projects);
 
 	return (
 		<div>

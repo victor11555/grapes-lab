@@ -13,11 +13,11 @@ function ProjectInfo({project}) {
 		<div>
 
 			<Container>
-				Author: { project.author }
-				Rating: { project.rating }
-				Status: { project.status }
-				Project Name: { project.projectName }
-				Concept: { project.concept }
+			<p>	Author: { project.author }</p>
+				<p>Rating: { project.rating }</p>
+				<p>Status: { project.status }</p>
+				<p>Project Name: { project.projectName }</p>
+				<p>Concept: { project.concept }</p>
 				<CommentList/>
 
 				<RoadMap/>
