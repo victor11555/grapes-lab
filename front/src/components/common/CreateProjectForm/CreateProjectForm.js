@@ -1,4 +1,4 @@
-import {Button, Form} from 'react-bootstrap';
+import {Button, Container, Form} from 'react-bootstrap';
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {createProjectAC} from '../../../store/actions/project.actions';
@@ -61,6 +61,7 @@ function CreateProjectForm(props) {
 
 	return (
 		<>
+			<Container>
 			<Form onSubmit={ submitHandler }>
 				<Form.Group>
 					<Form.Label>Concept</Form.Label>
@@ -121,6 +122,7 @@ function CreateProjectForm(props) {
 					Submit
 				</Button>
 			</Form>
+			</Container>
 		</>
 	);
 }
