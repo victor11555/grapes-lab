@@ -21,9 +21,9 @@ function ProjectInfo({project}) {
 
 				<RoadMap/>
 
-				<Button variant="primary">Связаться с ...</Button>{ ' ' }
+				<Button className={'btn btn-dark'} variant="primary">Связаться с ...</Button>{ ' ' }
 
-				<Button onClick={ () => dispatch(addPdfAC(project)) }
+				<Button className={'btn btn-dark'} onClick={ () => dispatch(addPdfAC(project)) }
 								variant="primary">Импорт в PDF</Button>
 
 			</Container>
