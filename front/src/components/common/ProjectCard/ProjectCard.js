@@ -1,26 +1,29 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 import Vote from '../Vote/Vote';
+import {Button} from 'react-bootstrap';
 
-function ProjectCard({id, author, projectName, concept, rating, status}) {
+function ProjectCard({project}) {
 
 	return (
 		<div>
 
 			<Card>
 				<Card.Body>
-					<Card.Title>ProjectName</Card.Title>
-					<Card.Subtitle className="mb-2 text-muted">Author</Card.Subtitle>
+					<Card.Title>{ project.projectName }</Card.Title>
+					<Card.Subtitle className="mb-2 text-muted">{ project.author }</Card.Subtitle>
 					<Card.Text>
-						ConceptConceptConceptConceptConceptConceptConceptConceptConceptConceptConceptConcept
+						{ project.concept }
 					</Card.Text>
 				</Card.Body>
 				<Card.Footer>
-					<small className="text-muted">Status</small>
-					<small className="text-muted">Rating</small>
+					<small className="text-muted">{ project.status }</small>
+					<small className="text-muted">{ project.rating }</small>
 					<small className="text-muted">
 						<Vote/>
 					</small>
+					<Button onClick={ () => {
+					} }>Show more...</Button>
 				</Card.Footer>
 			</Card>
 

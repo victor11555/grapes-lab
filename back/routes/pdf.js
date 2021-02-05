@@ -29,10 +29,11 @@ const fonts = {
   },
 };
 const printer = new PdfPrinter(fonts);
+const path = require('path')
 
 router.post('/', async (req, res) => {
   let { project } = req.body;
-  const { projectName, projectResult, needs, author, basis } = project;
+  const { projectName, projectResult, needs, author, basis, concept } = project;
   let docDefinition = {
     watermark: { text: 'rosatom', color: 'blue', opacity: 0.1, bold: false, italics: false },
     info: {
@@ -49,7 +50,7 @@ router.post('/', async (req, res) => {
           headerRows: 1,
           widths: ['*', 'auto', 100, '*'],
           body: [
-            ['first', 'Second', 'Third', 'The last one'],
+            [`${concept}`, 'Second', 'Third', 'The last one'],
             ['Value 1', 'Value 2', 'Value 3', 'Value 4'],
             [{ text: 'Bold value', bold: false, margin: [50, 50, 50, 50] }, 'Val 2', 'Val 3', 'Val 4'],
             ['first', 'Third', '', 'The last one'],
@@ -65,7 +66,7 @@ router.post('/', async (req, res) => {
   let write = fs.createWriteStream('./document.pdf');
   pdfDoc.pipe(write);
   write.on('finish', () => {
-    res.download(path.join(__dirname, '../document.pdf'));//.end
+    res.download(path.join(__dirname, '../document.pdf'))
   });
   pdfDoc.end();
 });

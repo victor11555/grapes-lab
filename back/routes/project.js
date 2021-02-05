@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const tokenKey = '1a2b-3c4d-5e6f-7g8h';
 const User = require('../models/user')
-
 const Project = require('../models/project');
 
 router.get('/', async (req, res) =>{
@@ -65,5 +64,34 @@ router.post('/', async (req, res, next) => {
     res.json({ success: false, message: err.message });
   }
 });
+
+router.post('/like',async(req,res)=>{
+  const { token,like, projectId } = req.body;
+  console.log(token);
+  let data = await jwt.verify(token, tokenKey, (err, decoded) => {
+    if (err) res.json({ success: false, message: 'token expired' });
+    return decoded;
+  });
+  try {
+    let { id } = data
+    let likeObj = {
+      userId: id,
+      like,
+    }
+    let project = await Project.findById(projectId)
+    projectId.rating.push(likeObj)
+    await project.save()
+    let stars
+    project.rating.forEach(el => {
+      stars += el.like
+    })
+    stars = stars / project.rating.length
+    res.json({success:true, stars })
+  }
+  catch (err){
+    res.json({success:false,message:err.message})
+  }
+
+})
 
 module.exports = router;

@@ -16,7 +16,7 @@ async function RequestgetProfile(payload) {
 function* getProfileWorker({payload}) {
     const user = yield call(RequestgetProfile, payload);
     if (user.success) yield put(addUserAC(user.user))
-    yield put(addErrorAC(user.message));
+    else yield put(addErrorAC(user.message));
 }
 
 export function* getProfileWatcher() {

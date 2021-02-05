@@ -1,39 +1,35 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import {Container} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import CommentList from '../CommentList/CommentList';
 import RoadMap from '../RoadMap/RoadMap';
-import {useDispatch, useSelector} from "react-redux";
-import {addPdfAC} from "../../../store/actions/pdf.actions";
+import { useDispatch } from 'react-redux';
+import { addPdfAC } from '../../../store/actions/pdf.actions';
 
+function ProjectInfo({ project }) {
+  const dispatch = useDispatch();
 
-function ProjectInfo({id, author, projectName, concept, rating, status}) {
+  return (
+    <div>
 
-	const project = useSelector(state => state.user.project[0])
+      <Container>
+        Author: {project.author}
+        Rating: {project.rating}
+        Status: {project.status}
+        Project Name: {project.projectName}
+        Concept: {project.concept}
+        <CommentList />
 
-    const dispatch = useDispatch();
-    return (
-        <div>
+        <RoadMap />
 
-            <Container>
-                MAP:
-                ProjectName
-                Author
-                Concept
-                Rating
-                Status
+        <Button variant='primary'>Связаться с ...</Button>{' '}
+        <Button onClick={() => dispatch(addPdfAC({ project }))}
+                variant='primary'>Импорт в PDF</Button>
 
-                <CommentList/>
-                <RoadMap/>
+      </Container>
 
-
-                <Button variant="primary">Связаться с ...</Button>{' '}
-                <Button onClick={() => dispatch(addPdfAC(project))}
-                        variant="primary">Импорт в PDF</Button>
-            </Container>
-
-        </div>
-    );
+    </div>
+  );
 }
 
 export default ProjectInfo;
