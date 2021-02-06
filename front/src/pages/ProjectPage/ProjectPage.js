@@ -7,9 +7,7 @@ function ProjectPage(props) {
   const projects = useSelector(state => state.projects);
   let project = null;
   let { id } = useParams();
-  // console.log(projects);
-  if (projects) project = projects.filter(el => el._id == id)[0];
-  // console.log(project);
+  if (projects) project = projects.filter(el => el._id === id)[0];
   return (
     <div>
 

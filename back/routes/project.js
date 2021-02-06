@@ -91,6 +91,11 @@ router.post('/like', async (req, res) => {
   });
 });
 
+router.post('/edit', async (req, res) => {
+  const { private } = req.body;
+
+});
+
 router.get('/all', async (req, res) => {
   try {
     let allProjects = await Project.find().populate('author comments team');
