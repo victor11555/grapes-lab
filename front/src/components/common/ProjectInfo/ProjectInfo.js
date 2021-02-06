@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Container } from 'react-bootstrap';
 import CommentList from '../CommentList/CommentList';
 import RoadMap from '../RoadMap/RoadMap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addPdfAC } from '../../../store/actions/pdf.actions';
 
 function ProjectInfo({ project }) {
   const dispatch = useDispatch();
+  const [showEdit,setShowEdit] = useState(false)
+  const user = useSelector(state=>state.user)
+  let i = user.projects.findIndex(el=>el._id==project._id)
+  useEffect(()=>{
+    if(i!==-1 || user=='Admin'){
+      setShowEdit(true)
+    }
+  },[])
+
   return (
 
     <Container>
@@ -24,6 +33,7 @@ function ProjectInfo({ project }) {
 
       <Button className={'btn btn-dark'} onClick={() => dispatch(addPdfAC(project))}
               variant='primary'>Импорт в PDF</Button>
+      {showEdit?<Button className={'btn btn-dark'}>Редактировать проект</Button>:null}
 
     </Container>
 
