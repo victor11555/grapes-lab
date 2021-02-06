@@ -11,9 +11,9 @@ function ProjectCard({ project }) {
   const history = useHistory();
 
   return (
-    <div>
+    <>
 
-      <Card className={'card'}>
+      <Card  className="bg-dark text-white">
         <Card.Body>
           <Card.Title>{project.projectName}</Card.Title>
           <Card.Subtitle className='mb-2  text-muted'>{project.author.name}</Card.Subtitle>
@@ -27,14 +27,14 @@ function ProjectCard({ project }) {
           <small className='text-muted'>
             <Vote projectId={project._id} />
           </small>
-          <Button className={'btn btn-dark'} onClick={(e) => {
+          <Button className={'btn btn-light'} onClick={(e) => {
             e.preventDefault()
             history.push(`/project/${project._id}`);
           }}>Show more...</Button>
         </Card.Footer>
       </Card>
 
-    </div>
+    </>
   );
 }
 
