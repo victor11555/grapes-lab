@@ -92,6 +92,7 @@ router.post('/like', async (req, res) => {
 });
 
 router.post('/edit', async (req, res) => {
+
   const { token, concept, projectName,
     description,
     projectResult,
@@ -106,6 +107,8 @@ router.post('/edit', async (req, res) => {
     privaate,
     projectId
   } = req.body;
+  let prototypeText = null;
+  if (needPrototype) prototypeText = req.body.prototypeText;
   await jwt.verify(token, tokenKey, async (err, decoded) => {
     if (err) {
       res.json({ success: false, message: 'token expired' });
@@ -123,6 +126,7 @@ router.post('/edit', async (req, res) => {
           acceptableOutcome,
           additionalNeeds,
           needPrototype,
+          prototypeText,
           privaate,
         });
         if (projectFromDB) {
