@@ -3,6 +3,7 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { editProfileAC } from '../../../store/actions/user.actions';
+import './EditProfile.css'
 
 function EditProfile() {
   let user = useSelector(state => state.user);
@@ -24,7 +25,7 @@ function EditProfile() {
   return (
     <div>
       <Container>
-        <div className={'signup-form'}>
+        <div className={'edit-form'}>
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='formBasicName'>
               <Form.Label>Name</Form.Label>
