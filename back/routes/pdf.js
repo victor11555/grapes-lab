@@ -32,8 +32,7 @@ const printer = new PdfPrinter(fonts);
 const path = require('path')
 
 router.post('/', async (req, res) => {
-  let { project } = req.body;
-  const { projectName, projectResult, needs, author, basis, concept } = project;
+  const { projectName, projectResult, needs, author, basis, concept } = req.body;
   let docDefinition = {
     watermark: { text: 'rosatom', color: 'blue', opacity: 0.1, bold: false, italics: false },
     info: {

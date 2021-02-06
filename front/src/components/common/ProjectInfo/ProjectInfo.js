@@ -8,12 +8,11 @@ import {addPdfAC} from '../../../store/actions/pdf.actions';
 
 function ProjectInfo({project}) {
 	const dispatch = useDispatch();
-
 	return (
 
 			<Container>
-			<p>Author: { project.author }</p>
-				<p>Rating: { project.rating }</p>
+			<p>Author: { project.author.name }</p>
+				{/*<p>Rating: { project.rating }</p>*/}
 				<p>Status: { project.status }</p>
 				<p>Project Name: { project.projectName }</p>
 				<p>Concept: { project.concept }</p>
