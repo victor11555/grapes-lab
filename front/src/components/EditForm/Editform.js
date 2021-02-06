@@ -1,10 +1,9 @@
-import { Button, Container, Form } from 'react-bootstrap';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createProjectAC } from '../../../store/actions/project.actions';
+import { createProjectAC } from '../../store/actions/project.actions';
+import { Button, Container, Form } from 'react-bootstrap';
 
-
-function CreateProjectForm(props) {
+function EditProjectForm({ id }) {
   const [select, setSelect] = useState(false);
   const dispatch = useDispatch();
 
@@ -12,9 +11,8 @@ function CreateProjectForm(props) {
     e.preventDefault();
 
     const boolNeedPrototype = e.target.needPrototype.value === 'Yes' ? true : false;
-
     const boolPrivate = e.target.private.value === 'Yes' ? true : false;
-    console.log(e.target);
+
     const {
       concept: { value: concept },
       projectName: { value: projectName },
@@ -116,12 +114,9 @@ function CreateProjectForm(props) {
           {select ? needPrototype : null}
           <Form.Group>
             <Form.Label>Additional Needs</Form.Label>
-
             <Form.Control name={'additionalNeeds'} type={'text'}>
             </Form.Control>
-            <Form.Label>Private?</Form.Label>
             <Form.Control name={'private'} as='select'>
-
               <option>No</option>
               <option>Yes</option>
             </Form.Control>
@@ -134,5 +129,3 @@ function CreateProjectForm(props) {
     </>
   );
 }
-
-export default CreateProjectForm;

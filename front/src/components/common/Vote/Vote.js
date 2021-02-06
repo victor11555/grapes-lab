@@ -26,7 +26,6 @@ function Vote({ projectId }) {
         <input type='radio' name='rating' value='1' id='1' />
         <label htmlFor='1'>☆</label>
       </div>
-
     </form>
   );
 }
