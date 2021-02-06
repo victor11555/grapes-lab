@@ -66,7 +66,6 @@ router.post('/', async (req, res, next) => {
 
 router.post('/like', async (req, res) => {
   const { token, like, projectId } = req.body;
-  console.log(token);
   await jwt.verify(token, tokenKey, async (err, decoded) => {
     if (err) res.json({ success: false, message: 'token expired' });
 
@@ -79,11 +78,13 @@ router.post('/like', async (req, res) => {
       let project = await Project.findById(projectId);
       project.rating.push(likeObj);
       await project.save();
-      let stars;
+      let stars = 0;
       project.rating.forEach(el => {
-        stars += el.like;
+        if(project.rating.indexOf(el) !== 0) stars += el.like;
       });
-      stars = stars / project.rating.length;
+      stars /= project.rating.length-1;
+      project.rating[0].like = stars;
+      await project.save()
       res.json({ success: true, stars });
     } catch (err) {
       res.json({ success: false, message: err.message });
