@@ -1,14 +1,14 @@
 import React from 'react';
 import CommentCard from '../CommentCard/CommentCard';
 
-function CommentList({id}) {
-	return (
-		<div>
+function CommentList({ id }) {
+  return (
+    <div>
 
-			<CommentCard/>
+      <CommentCard />
 
-		</div>
-	);
+    </div>
+  );
 }
 
 export default CommentList;

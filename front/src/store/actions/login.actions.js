@@ -1,6 +1,6 @@
-import {USER_LOGIN} from "../types";
+import { USER_LOGIN } from '../types';
 
 export const userLoginAC = (payload) => ({
-    type: USER_LOGIN,
-    payload
-})
+  type: USER_LOGIN,
+  payload,
+});

@@ -29,7 +29,7 @@ const fonts = {
   },
 };
 const printer = new PdfPrinter(fonts);
-const path = require('path')
+const path = require('path');
 
 router.post('/', async (req, res) => {
   const { projectName, projectResult, needs, author, basis, concept } = req.body;
@@ -65,7 +65,7 @@ router.post('/', async (req, res) => {
   let write = fs.createWriteStream('./document.pdf');
   pdfDoc.pipe(write);
   write.on('finish', () => {
-    res.download(path.join(__dirname, '../document.pdf'))
+    res.download(path.join(__dirname, '../document.pdf'));
   });
   pdfDoc.end();
 });

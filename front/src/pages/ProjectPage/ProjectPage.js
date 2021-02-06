@@ -4,19 +4,19 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 function ProjectPage(props) {
-	const projects = useSelector(state=>state.projects)
-	let project = null;
-	let {id} = useParams();
-	// console.log(projects);
-	if(projects) project = projects.filter(el=>el._id==id)[0]
-	// console.log(project);
-	return (
-		<div>
+  const projects = useSelector(state => state.projects);
+  let project = null;
+  let { id } = useParams();
+  // console.log(projects);
+  if (projects) project = projects.filter(el => el._id == id)[0];
+  // console.log(project);
+  return (
+    <div>
 
-			{project ? <ProjectInfo project={project}/> : null}
+      {project ? <ProjectInfo project={project} /> : null}
 
-		</div>
-	);
+    </div>
+  );
 };
 
 export default ProjectPage;

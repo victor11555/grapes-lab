@@ -1,6 +1,6 @@
-import {ADD_ERROR} from "../types";
+import { ADD_ERROR } from '../types';
 
 export const addErrorAC = (payload) => ({
-    type: ADD_ERROR,
-    payload
-})
+  type: ADD_ERROR,
+  payload,
+});

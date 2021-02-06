@@ -4,7 +4,7 @@ import SignUpBox from '../../components/common/SignUpBox/SignUpBox';
 function SignUp(props) {
   return (
     <div>
-      <SignUpBox/>
+      <SignUpBox />
     </div>
   );
 }
