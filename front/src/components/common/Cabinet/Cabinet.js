@@ -29,7 +29,7 @@ function Cabinet(props) {
       <div style={{display :'flex', justifyContent:'flex-end', marginRight: '15px'}}>
         <Button variant='dark' onClick={() => setState(!state)}>Добавить проект</Button>
       </div>
-      {state ? <CreateProjectForm /> : null}
+      {state ? <CreateProjectForm setState={setState} state={state} /> : null}
       <ProjectList newState={'Cab'} />
     </Container>
   );

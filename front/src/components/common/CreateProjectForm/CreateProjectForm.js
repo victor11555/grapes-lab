@@ -2,14 +2,17 @@ import { Button, Container, Form } from 'react-bootstrap';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createProjectAC } from '../../../store/actions/project.actions';
+import {useHistory} from "react-router-dom";
 
 
-function CreateProjectForm(props) {
+function CreateProjectForm({setState,state}) {
   const [select, setSelect] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setState(!state)
 
     const boolNeedPrototype = e.target.needPrototype.value === 'Yes' ? true : false;
 
@@ -47,6 +50,7 @@ function CreateProjectForm(props) {
       needPrototype: boolNeedPrototype,
       privaate: boolPrivate,
     }));
+    history.push('/cabinet')
   };
 
   const needPrototype = <Form.Group>

@@ -1,4 +1,14 @@
-import { CREATE_PROJECT, GET_ALL_PROJECTS, INIT_ALL_PROJECTS, SAVE_VOTED_PROJECT, VOTE_PROJECT, EDIT_PROJECT, SAVE_CHANGES_PROJECT } from '../types';
+import {
+  CREATE_PROJECT,
+  GET_ALL_PROJECTS,
+  INIT_ALL_PROJECTS,
+  SAVE_VOTED_PROJECT,
+  VOTE_PROJECT,
+  EDIT_PROJECT,
+  SAVE_CHANGES_PROJECT,
+  DELETE_PROJECT,
+  DELETE_PROJECT_FROM_STORE
+} from '../types';
 
 export const createProjectAC = (payload) => ({
   type: CREATE_PROJECT,
@@ -34,3 +44,14 @@ export const saveChangesProjectAC = (payload) => ({
   type: SAVE_CHANGES_PROJECT,
   payload,
 });
+
+export const deleteProjectAC = (payload) => ({
+  type: DELETE_PROJECT,
+  payload
+})
+
+
+export const deleteProjectFromStoreAC = (payload) => ({
+  type: DELETE_PROJECT_FROM_STORE,
+  payload
+})
