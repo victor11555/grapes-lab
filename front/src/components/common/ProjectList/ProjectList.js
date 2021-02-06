@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ProjectCard from '../ProjectCard/ProjectCard';
-import { useDispatch, useSelector } from 'react-redux';
-import { initAllProjectsAC } from '../../../store/actions/project.actions';
+import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import { store } from '../../../store/store';
 
 function ProjectList({ newState }) {
 
@@ -13,9 +11,9 @@ function ProjectList({ newState }) {
 
 
   if (newState) {
-    projects=userProjects
+    projects = userProjects;
   } else {
-    projects=allProjects
+    projects = allProjects;
   }
   return (
     <Container>
