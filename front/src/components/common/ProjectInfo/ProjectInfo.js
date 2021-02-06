@@ -5,12 +5,19 @@ import CommentList from '../CommentList/CommentList';
 import RoadMap from '../RoadMap/RoadMap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPdfAC } from '../../../store/actions/pdf.actions';
+import EditProjectForm from '../../EditForm/Editform';
 
 function ProjectInfo({ project }) {
   const dispatch = useDispatch();
   const [showEdit,setShowEdit] = useState(false)
+  const [editForm,setEditForm] = useState(false)
+  const editFormHandler = (e) =>{
+    e.preventDefault()
+    setEditForm(!editForm)
+  }
+  let i
   const user = useSelector(state=>state.user)
-  let i = user.projects.findIndex(el=>el._id==project._id)
+  if(user.projects) {i = user.projects.findIndex(el=>el._id==project._id)}
   useEffect(()=>{
     if(i!==-1 || user=='Admin'){
       setShowEdit(true)
@@ -33,7 +40,8 @@ function ProjectInfo({ project }) {
 
       <Button className={'btn btn-dark'} onClick={() => dispatch(addPdfAC(project))}
               variant='primary'>Импорт в PDF</Button>
-      {showEdit?<Button className={'btn btn-dark'}>Редактировать проект</Button>:null}
+      {showEdit?<Button onClick={editFormHandler} className={'btn btn-dark'}>Редактировать проект</Button>:null}
+      {editForm?<EditProjectForm project={project}/>:null}
 
     </Container>
 
