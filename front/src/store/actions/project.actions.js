@@ -1,4 +1,4 @@
-import { CREATE_PROJECT, GET_ALL_PROJECTS, INIT_ALL_PROJECTS, SAVE_VOTED_PROJECT, VOTE_PROJECT } from '../types';
+import { CREATE_PROJECT, GET_ALL_PROJECTS, INIT_ALL_PROJECTS, SAVE_VOTED_PROJECT, VOTE_PROJECT, EDIT_PROJECT, SAVE_CHANGES_PROJECT } from '../types';
 
 export const createProjectAC = (payload) => ({
   type: CREATE_PROJECT,
@@ -22,5 +22,15 @@ export const voteProjectsAC = (payload) => ({
 
 export const saveVotedProjectsAC = (payload) => ({
   type: SAVE_VOTED_PROJECT,
+  payload,
+});
+
+export const editProjectAC = (payload) => ({
+  type: EDIT_PROJECT,
+  payload,
+});
+
+export const saveChangesProjectAC = (payload) => ({
+  type: SAVE_CHANGES_PROJECT,
   payload,
 });

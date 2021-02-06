@@ -7,7 +7,8 @@ import { pdfWatcher } from './pdf.saga';
 import { GetAllProjectsWatcher } from './getAllProjects.saga';
 import { getProfileEditWatcher } from './editProfile.saga';
 import { voteProjectWatcher } from './voteProjects.saga';
+import { getProjectEditWatcher } from './editProject.saga';
 
 export function* rootWatcher() {
-  yield all([loginWatcher(), signupWatcher(), getProfileWatcher(), createProjectWatcher(), pdfWatcher(), GetAllProjectsWatcher(), getProfileEditWatcher(), voteProjectWatcher()]);
+  yield all([loginWatcher(), signupWatcher(), getProfileWatcher(), createProjectWatcher(), pdfWatcher(), GetAllProjectsWatcher(), getProfileEditWatcher(), voteProjectWatcher(), getProjectEditWatcher()]);
 }
