@@ -23,6 +23,9 @@ function ProjectInfo({ project }) {
       setShowEdit(true)
     }
   },[])
+  const deleteProjectHandler = (e) =>{
+    e.preventDefault()
+  }
 
   return (
 
@@ -41,6 +44,7 @@ function ProjectInfo({ project }) {
       <Button className={'btn btn-dark'} onClick={() => dispatch(addPdfAC(project))}
               variant='primary'>Импорт в PDF</Button>
       {showEdit?<Button onClick={editFormHandler} className={'btn btn-dark'}>Редактировать проект</Button>:null}
+      {showEdit?<Button onClick={deleteProjectHandler}/>:null}
       {editForm?<EditProjectForm project={project}/>:null}
 
     </Container>

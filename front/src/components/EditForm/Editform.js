@@ -43,6 +43,7 @@ function EditProjectForm({ project }) {
       targetClient,
       acceptableOutcome,
       additionalNeeds,
+      projectId:project._id,
       needPrototype: boolNeedPrototype,
       privaate: boolPrivate,
     }));
