@@ -104,6 +104,6 @@ dist
 .tern-port
 
 .idea
-
+*.pdf
 .vscode
 .DS_Store
