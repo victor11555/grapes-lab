@@ -11,8 +11,8 @@
 .rating > label {
     position: relative;
     width: 1em;
-    font-size: 16px;
-    color: #FFD600;
+    font-size: 25px;
+    color: #ffffff;
     cursor: pointer
 }
 

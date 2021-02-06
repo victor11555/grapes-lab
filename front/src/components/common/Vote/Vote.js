@@ -3,7 +3,7 @@ import style from './Vote.module.css';
 import { voteProjectsAC } from '../../../store/actions/project.actions';
 import { useDispatch } from 'react-redux';
 
-function Vote({ projectId }) {
+function  Vote({ projectId }) {
   const dispatch = useDispatch();
 
   function changeHandler(e) {

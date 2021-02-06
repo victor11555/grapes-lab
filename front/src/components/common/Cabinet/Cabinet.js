@@ -16,14 +16,19 @@ function Cabinet(props) {
         <Badge center variant='secondary'>Личный кабинет</Badge>
       </h1>
       {user ?
-        <Card style={{ width: '22rem' }}>
-          <Card.Header>{user.name}</Card.Header>
-          <ListGroup variant='flush'>
-            <ListGroup.Item>Телефон для связи: {user.phone}</ListGroup.Item>
-            <ListGroup.Item>Email: {user.email}</ListGroup.Item>
-          </ListGroup>
-        </Card> : null}
-      <Button onClick={() => setState(!state)}>Добавить проект</Button>
+        <div style={{ marginLeft: '15px' }}>
+          <Card className='mb-2 bg-dark text-white user-card' style={{ width: '18rem ' }}>
+            <Card.Header>{user.name}</Card.Header>
+            <ListGroup style={{ color: 'black' }} variant='flush'>
+              <ListGroup.Item>Телефон для связи: <br />{user.phone}</ListGroup.Item>
+              <ListGroup.Item>Email: {user.email}</ListGroup.Item>
+            </ListGroup>
+          </Card>
+        </div>
+        : null}
+      <div style={{display :'flex', justifyContent:'flex-end', marginRight: '15px'}}>
+        <Button variant='dark' onClick={() => setState(!state)}>Добавить проект</Button>
+      </div>
       {state ? <CreateProjectForm setState={setState} state={state} /> : null}
       <ProjectList newState={'Cab'} />
     </Container>
