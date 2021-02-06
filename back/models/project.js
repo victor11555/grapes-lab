@@ -14,7 +14,7 @@ const projectSchema = new mongoose.Schema({
   needPrototype: { type: Boolean, required: true, default: false },
   prototypeText: { type: String, required: false },
   additionalNeeds: { type: String, required: true },
-  private: { Boolean, default: false },
+  privaate: { Boolean, default: false },
   team: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   moderating: { type: Boolean, required: true, default: false },
   rating: [{ type: Object, default: [{userId: '0', like: 0}] }],
