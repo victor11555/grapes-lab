@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Container } from 'react-bootstrap';
 import CommentList from '../CommentList/CommentList';
@@ -9,27 +9,35 @@ import EditProjectForm from '../../EditForm/Editform';
 
 function ProjectInfo({ project }) {
   const dispatch = useDispatch();
-  const [showEdit,setShowEdit] = useState(false)
-  const [editForm,setEditForm] = useState(false)
-  const editFormHandler = (e) =>{
-    e.preventDefault()
-    setEditForm(!editForm)
-  }
-  let i
-  const user = useSelector(state=>state.user)
-  if(user.projects) {i = user.projects.findIndex(el=>el._id==project._id)}
-  useEffect(()=>{
-    if(i!==-1 || user=='Admin'){
-      setShowEdit(true)
+  const [showEdit, setShowEdit] = useState(false);
+  const [editForm, setEditForm] = useState(false);
+  const editFormHandler = (e) => {
+    e.preventDefault();
+    setEditForm(!editForm);
+  };
+  let i=-1
+  const user = useSelector(state => state.user);
+
+
+  useEffect(() => {
+    if (user.projects) {
+      i = user.projects.findIndex(el => el._id == project._id);
     }
-  },[])
-  const deleteProjectHandler = (e) =>{
-    e.preventDefault()
-  //Здесь диспатч саги на удаление.
+    if (i !== -1 || user.role == 'Admin') {
+      setShowEdit(true);
+    }
+    else {
+      setShowEdit(false)
+    }
+      console.log(showEdit);
+  }, []);
+  const deleteProjectHandler = (e) => {
+    e.preventDefault();
+    //Здесь диспатч саги на удаление.
     //ID проекта + токен.
     //Пост на projects/delete
     //в ответ success:true или message :)
-  }
+  };
 
   return (
 
@@ -47,9 +55,9 @@ function ProjectInfo({ project }) {
 
       <Button className={'btn btn-dark'} onClick={() => dispatch(addPdfAC(project))}
               variant='primary'>Импорт в PDF</Button>
-      {showEdit?<Button onClick={editFormHandler} className={'btn btn-dark'}>Редактировать проект</Button>:null}
-      {showEdit?<Button className={'btn btn-dark'} onClick={deleteProjectHandler}>Удалить проект </Button>:null}
-      {editForm?<EditProjectForm project={project}/>:null}
+      {showEdit ? <Button onClick={editFormHandler} className={'btn btn-dark'}>Редактировать проект</Button> : null}
+      {showEdit ? <Button className={'btn btn-dark'} onClick={deleteProjectHandler}>Удалить проект </Button> : null}
+      {editForm ? <EditProjectForm project={project} /> : null}
     </Container>
 
   );
