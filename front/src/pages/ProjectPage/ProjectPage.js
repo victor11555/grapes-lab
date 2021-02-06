@@ -1,11 +1,15 @@
 import React from 'react';
 import ProjectInfo from '../../components/common/ProjectInfo/ProjectInfo';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 function ProjectPage(props) {
-	const user = useSelector(state=>state.user)
+	const projects = useSelector(state=>state.projects)
 	let project = null;
-	if(user.projects) project = user.projects[0]
+	let {id} = useParams();
+	// console.log(projects);
+	if(projects) project = projects.filter(el=>el._id==id)[0]
+	// console.log(project);
 	return (
 		<div>
 

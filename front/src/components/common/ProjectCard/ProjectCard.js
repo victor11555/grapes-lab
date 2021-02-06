@@ -24,12 +24,12 @@ function ProjectCard({project}) {
 				</Card.Body>
 				<Card.Footer>
 					<small className="text-muted">{ project.status }</small>
-					<small className="text-muted">{ project.rating }</small>
+					{/*<small className="text-muted">{ project.rating }</small>*/}
 					<small className="text-muted">
 						<Vote projectId={project._id}/>
 					</small>
 					<Button className={'btn btn-dark'} onClick={ () => {
-						history.push('/project');
+						history.push(`/project/${project._id}`);
 					} }>Show more...</Button>
 				</Card.Footer>
 			</Card>

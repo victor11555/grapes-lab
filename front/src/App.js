@@ -12,12 +12,14 @@ import CabinetPage from './pages/CabinetPage/CabinetPage';
 import ProjectPage from './pages/ProjectPage/ProjectPage';
 import Dashboard from './pages/Dashboard/Dashboard';
 import EditProfile from './components/common/EditProfile/EditProfile';
+import { initAllProjectsAC } from './store/actions/project.actions';
 function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const token = JSON.parse(localStorage.getItem('jwt'));
 		dispatch(getProfileAC({token}));
+		dispatch(initAllProjectsAC([]));
 	}, []);
 
 	return (
@@ -29,7 +31,7 @@ function App() {
 				<Route exact path='/signup' component={ SignUp }/>
 				<Route exact path='/editprofile' component={ EditProfile }/>
 				<Route path='/cabinet' component={ CabinetPage }/>
-				<Route path='/project' component={ ProjectPage }/>
+				<Route path='/project/:id' component={ ProjectPage }/>
 			</Switch>
 			<Footer/>
 		</div>

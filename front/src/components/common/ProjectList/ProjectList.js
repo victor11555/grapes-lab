@@ -6,10 +6,7 @@ import { Container } from 'react-bootstrap';
 import { store } from '../../../store/store';
 
 function ProjectList({ newState }) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(initAllProjectsAC([]));
-  }, []);
+
   let projects;
   const allProjects = useSelector(store => store.projects);
   const userProjects = useSelector(store => store.user.projects);
