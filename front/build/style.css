@@ -1,0 +1,11 @@
+body{
+    background-image: url('./img/bg2.jpg');
+    background-repeat: no-repeat;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    background-attachment:fixed;
+    font-family: 'Roboto', sans-serif;
+    /*color: white;*/
+}
