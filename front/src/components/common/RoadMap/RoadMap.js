@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import StepProgressBar from 'react-step-progress';
 import 'react-step-progress/dist/index.css';
 import { useSelector } from 'react-redux';
+import './RoadMap.css'
 
 function RoadMap(props) {
-  const step1Content = <h1>Step 1 Content</h1>;
-  const step2Content = <h1>Step 2 Content</h1>;
-  const step3Content = <h1>Step 3 Content</h1>;
-  const step4Content = <h1>Step 4 Content</h1>;
-  const step5Content = <h1>Step 5 Content</h1>;
+  const step1Content = <h1 className='h-1'>Step 1 Content</h1>;
+  const step2Content = <h1 className='h-1'>Step 2 Content</h1>;
+  const step3Content = <h1 className='h-1'>Step 3 Content</h1>;
+  const step4Content = <h1 className='h-1'>Step 4 Content</h1>;
+  const step5Content = <h1 className='h-1'>Step 5 Content</h1>;
 
   const user = useSelector(state => state.user);
   useEffect(() => {
