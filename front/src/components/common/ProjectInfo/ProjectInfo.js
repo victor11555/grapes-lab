@@ -67,7 +67,7 @@ function ProjectInfo({ project }) {
 
       </div>
       {editForm ? <EditProjectForm project={project} /> : null}
-      <CommentList />
+      {/*<CommentList />*/}
     </Container>
 
   );

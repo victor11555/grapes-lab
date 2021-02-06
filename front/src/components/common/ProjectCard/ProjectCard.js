@@ -5,9 +5,11 @@ import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 
 import './ProjectCard.css';
+import { useSelector } from 'react-redux';
 
 function ProjectCard({ project }) {
 
+  const user = useSelector(store => store.user.isLogged)
   const history = useHistory();
 
   return (
@@ -27,10 +29,10 @@ function ProjectCard({ project }) {
           <small className='text-muted'>
             <Vote projectId={project._id} />
           </small>
-          <Button className={'btn btn-light'} onClick={(e) => {
+          {user ? <Button className={'btn btn-light'} onClick={(e) => {
             e.preventDefault()
             history.push(`/project/${project._id}`);
-          }}>Show more...</Button>
+          }}>Show more...</Button> : null}
         </Card.Footer>
       </Card>
 

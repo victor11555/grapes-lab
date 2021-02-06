@@ -8,7 +8,7 @@ function Dashboard(props) {
 
   return (
     <Container>
-      <ProjectFilter />
+      {/*<ProjectFilter />*/}
       <ProjectList />
 
     </Container>
