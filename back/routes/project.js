@@ -146,7 +146,11 @@ router.post('/delete', async (req, res) => {
     } else {
       try {
         await Project.findOneAndDelete({ _id: projectId });
-        res.json({success: true})
+        let { id } = decoded;
+        const user = await User.findOne({_id: id})
+        user.projects.filter(el=> el !== projectId);
+        await user.save()
+        res.json({success: true, projectId});
       } catch (err) {
         res.json({ success: false, message: err.message });
       }

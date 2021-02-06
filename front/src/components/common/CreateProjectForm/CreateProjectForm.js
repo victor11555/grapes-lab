@@ -4,12 +4,13 @@ import { useDispatch } from 'react-redux';
 import { createProjectAC } from '../../../store/actions/project.actions';
 
 
-function CreateProjectForm(props) {
+function CreateProjectForm(setState,state) {
   const [select, setSelect] = useState(false);
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setState(!state)
 
     const boolNeedPrototype = e.target.needPrototype.value === 'Yes' ? true : false;
 

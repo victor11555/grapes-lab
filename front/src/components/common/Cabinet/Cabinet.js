@@ -24,7 +24,7 @@ function Cabinet(props) {
           </ListGroup>
         </Card> : null}
       <Button onClick={() => setState(!state)}>Добавить проект</Button>
-      {state ? <CreateProjectForm /> : null}
+      {state ? <CreateProjectForm setState={setState} state={state} /> : null}
       <ProjectList newState={'Cab'} />
     </Container>
   );
