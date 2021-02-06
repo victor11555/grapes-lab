@@ -13,7 +13,7 @@ function Cabinet(props) {
   return (
     <Container>
       <h1>
-        <Badge center variant='secondary'>Личный кабинет</Badge>
+        <Badge style={{marginLeft: "15px"}} center variant='secondary'>Личный кабинет</Badge>
       </h1>
       {user ?
         <div style={{ marginLeft: '15px' }}>

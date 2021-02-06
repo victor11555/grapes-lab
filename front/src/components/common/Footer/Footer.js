@@ -6,7 +6,7 @@ function Footer(props) {
     <div>
       <div className={'empty'}></div>
       <footer>
-        <p>&copy; Виноградный жмых</p>
+        <p>&copy; Squeeze-Grapes  </p>
       </footer>
     </div>
   );
