@@ -32,35 +32,47 @@ const printer = new PdfPrinter(fonts);
 const path = require('path');
 
 router.post('/', async (req, res) => {
-  const { projectName, projectResult, needs, author, basis, concept } = req.body;
+  const project = req.body;
   let docDefinition = {
-    watermark: { text: 'rosatom', color: 'blue', opacity: 0.1, bold: false, italics: false },
+    watermark: { text: 'rosatom', color: 'blue', opacity: 0.3, bold: false, italics: false },
     info: {
-      title: `${projectName}`,
-      author: `${author}`,
-      subject: `${projectResult}`,
-      keywords: `${needs} ${basis}`,
+      title: project.title,
+      author: project.author,
+      subject: project.subject,
+      keywords: project.keywords
     },
-    header: 'header',
-    footer: 'footer',
-    content: [
-      {
-        table: {
-          headerRows: 1,
-          widths: ['*', 'auto', 100, '*'],
-          body: [
-            [`${concept}`, 'Second', 'Third', 'The last one'],
-            ['Value 1', 'Value 2', 'Value 3', 'Value 4'],
-            [{ text: 'Bold value', bold: false, margin: [50, 50, 50, 50] }, 'Val 2', 'Val 3', 'Val 4'],
-            ['first', 'Third', '', 'The last one'],
-          ],
-        },
-      },
+
+    header: {text:`${project.projectName}`,  fontSize: 25, bold: true, alignment: 'center', color: '#6b5b95', characterSpacing: 2},
+
+    content:[
+      {text: 'Концепт.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.concept}`},
+      {text: 'О проекте.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.description}`},
+      {text: 'Технология.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.technology}`},
+      {text: 'Целевая аудитория.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.targetClient}`},
+      {text: 'Анализа конкурентов.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.comparison}`},
+      {text: 'Обоснование актуальности.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.basis}`},
+      {text: 'Необходимые условия.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.needs}`},
+      {text: 'Результат проекта.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.projectResult}`},
+      {text: 'Приемлемый результат.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.acceptableOutcome}`},
+      {text: 'Дополнительные нужды.', bold: true, fontSize: 18,  margin: [0,10,0,10], color: '#6b5b95'},
+      {text: `${project.additionalNeeds}`}
     ],
+
     defaultStyle: {
-      font: 'Helvetica',
-    },
+      font: 'Times',
+      fontSize: 12
+    }
   };
+
   let pdfDoc = printer.createPdfKitDocument(docDefinition);
   let write = fs.createWriteStream('./document.pdf');
   pdfDoc.pipe(write);
