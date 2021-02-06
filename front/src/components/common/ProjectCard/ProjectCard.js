@@ -1,41 +1,40 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Vote from '../Vote/Vote';
-import {Button} from 'react-bootstrap';
-import {useHistory} from 'react-router';
+import { Button } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 
-import './ProjectCard.css'
-import CommentList from '../CommentList/CommentList';
+import './ProjectCard.css';
 
-function ProjectCard({project}) {
+function ProjectCard({ project }) {
 
-	const history = useHistory();
+  const history = useHistory();
 
-	return (
-		<div>
+  return (
+    <div>
 
-			<Card className={'card'}>
-				<Card.Body>
-					<Card.Title>{ project.projectName }</Card.Title>
-					<Card.Subtitle className="mb-2  text-muted">{ project.author.name }</Card.Subtitle>
-					<Card.Text>
-						{ project.concept }
-					</Card.Text>
-				</Card.Body>
-				<Card.Footer>
-					<small className="text-muted">{ project.status }</small>
-					{/*<small className="text-muted">{ project.rating }</small>*/}
-					<small className="text-muted">
-						<Vote projectId={project._id}/>
-					</small>
-					<Button className={'btn btn-dark'} onClick={ () => {
-						history.push(`/project/${project._id}`);
-					} }>Show more...</Button>
-				</Card.Footer>
-			</Card>
+      <Card className={'card'}>
+        <Card.Body>
+          <Card.Title>{project.projectName}</Card.Title>
+          <Card.Subtitle className='mb-2  text-muted'>{project.author.name}</Card.Subtitle>
+          <Card.Text>
+            {project.concept}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className='text-muted'>{project.status}</small>
+          {/*<small className="text-muted">{ project.rating }</small>*/}
+          <small className='text-muted'>
+            <Vote projectId={project._id} />
+          </small>
+          <Button className={'btn btn-dark'} onClick={() => {
+            history.push(`/project/${project._id}`);
+          }}>Show more...</Button>
+        </Card.Footer>
+      </Card>
 
-		</div>
-	);
+    </div>
+  );
 }
 
 export default ProjectCard;

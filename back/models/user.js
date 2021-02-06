@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   phone: { type: String, required: true },
   company: { type: String, required: true },
   role: { type: String, required: true, default: 'User' },
-  projects: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Project'}]
+  projects: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Project' }],
 });
 
 module.exports = mongoose.model('User', userSchema);

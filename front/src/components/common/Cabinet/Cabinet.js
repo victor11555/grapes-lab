@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import CreateProjectForm from '../CreateProjectForm/CreateProjectForm';
-import { Container, ListGroup, Card, Badge } from 'react-bootstrap';
+import { Badge, Card, Container, ListGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import ProjectList from '../ProjectList/ProjectList';
 

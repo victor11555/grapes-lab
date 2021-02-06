@@ -4,7 +4,7 @@ import LoginBox from '../../components/common/ LoginBox/LoginBox';
 function Login(props) {
   return (
     <div>
-      <LoginBox/>
+      <LoginBox />
     </div>
   );
 }

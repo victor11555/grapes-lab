@@ -10,7 +10,7 @@ function RoadMap(props) {
   const step4Content = <h1>Step 4 Content</h1>;
   const step5Content = <h1>Step 5 Content</h1>;
 
-    const user = useSelector(state => state.user);
+  const user = useSelector(state => state.user);
   useEffect(() => {
     const prev = document.getElementsByClassName('_3CDiP');
     const next = document.getElementsByClassName('_hsN1w');
@@ -19,6 +19,7 @@ function RoadMap(props) {
       next[0].style.display = 'none';
     }
   }, []);
+
   function step2Validator() {
 
   }
