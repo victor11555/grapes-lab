@@ -15,7 +15,6 @@ async function VoteProject(payload) {
 
 function* voteProjectWorker({ payload }) {
   const response = yield call(VoteProject, payload);
-  console.log(response);
   if (response.success) yield put(saveVotedProjectsAC(response.project));
   else yield put(addErrorAC(response.message));
 }

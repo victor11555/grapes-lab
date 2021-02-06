@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res, next) => {
   const { token } = req.body;
-  console.log(token);
   await jwt.verify(token, tokenKey, async (err, decoded) => {
     if (err) res.json({ success: false, message: 'token expired' });
     const { id } = decoded;
@@ -31,7 +30,7 @@ router.post('/', async (req, res, next) => {
       acceptableOutcome,
       needPrototype,
       additionalNeeds,
-      private,
+      privaate,
     } = req.body;
     try {
       let prototypeText = null;
@@ -52,7 +51,7 @@ router.post('/', async (req, res, next) => {
         needPrototype,
         prototypeText,
         additionalNeeds,
-        private,
+        privaate,
       });
       await project.save();
       user.projects.push(project._id);
@@ -85,7 +84,7 @@ router.post('/like', async (req, res) => {
       stars /= project.rating.length-1;
       project.rating[0].like = stars;
       await project.save()
-      res.json({ success: true, stars });
+      res.json({ success: true, project });
     } catch (err) {
       res.json({ success: false, message: err.message });
     }
@@ -93,7 +92,66 @@ router.post('/like', async (req, res) => {
 });
 
 router.post('/edit', async (req, res) => {
-  const { private } = req.body;
+  const { token, concept, projectName,
+    description,
+    projectResult,
+    technology,
+    comparison,
+    basis,
+    needs,
+    targetClient,
+    acceptableOutcome,
+    additionalNeeds,
+    needPrototype,
+    privaate,
+    projectId
+  } = req.body;
+  await jwt.verify(token, tokenKey, async (err, decoded) => {
+    if (err) {
+      res.json({ success: false, message: 'token expired' });
+    } else {
+      try {
+        let projectFromDB = await Project.findOneAndUpdate({ _id: projectId }, {
+          concept, projectName,
+          description,
+          projectResult,
+          technology,
+          comparison,
+          basis,
+          needs,
+          targetClient,
+          acceptableOutcome,
+          additionalNeeds,
+          needPrototype,
+          privaate,
+        });
+        if (projectFromDB) {
+          res.json({ success: true, project: projectFromDB });
+        } else {
+          res.json({ success: false, message: 'no such user' });
+        }
+      } catch (err) {
+        res.json({ success: false, message: err.message });
+      }
+    }
+  });
+
+});
+
+router.post('/delete', async (req, res) => {
+  const { token, projectId } = req.body;
+  await jwt.verify(token, tokenKey, async (err, decoded) => {
+    if (err) {
+      res.json({ success: false, message: 'token expired' });
+    } else {
+      try {
+        await Project.findOneAndDelete({ _id: projectId });
+        res.json({success: true})
+      } catch (err) {
+        res.json({ success: false, message: err.message });
+      }
+    }
+  });
 
 });
 
