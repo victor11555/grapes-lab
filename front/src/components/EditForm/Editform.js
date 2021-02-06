@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createProjectAC, editProjectAC } from '../../store/actions/project.actions';
 import { Button, Container, Form } from 'react-bootstrap';
 import ProjectInfo from '../common/ProjectInfo/ProjectInfo';
+import './Edit-Form.css'
 
 function EditProjectForm({ project }) {
   const [select, setSelect] = useState(false);
@@ -65,46 +66,47 @@ function EditProjectForm({ project }) {
   return (
     <>
       <Container>
+        <div className={'edit-project-form'}>
         <Form onSubmit={submitHandler}>
-          <Form.Group>
-            <Form.Label>Concept</Form.Label>
-            <Form.Control name='concept' type='text' defaultValue={project.concept} required />
-          </Form.Group>
           <Form.Group>
             <Form.Label>Project name</Form.Label>
             <Form.Control name='projectName' defaultValue={project.projectName} type='text' required />
           </Form.Group>
           <Form.Group>
+            <Form.Label>Concept</Form.Label>
+            <Form.Control as="textarea" rows={3} name='concept' type='text' defaultValue={project.concept} required />
+          </Form.Group>
+          <Form.Group>
             <Form.Label>Description</Form.Label>
-            <Form.Control type='textArea' defaultValue={project.description} name='description' required />
+            <Form.Control type='textArea' as="textarea" rows={3} defaultValue={project.description} name='description' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Project result</Form.Label>
-            <Form.Control type='textArea' defaultValue={project.projectResult} name='projectResult' required />
+            <Form.Control as="textarea" rows={3} type='textArea' defaultValue={project.projectResult} name='projectResult' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Technology</Form.Label>
-            <Form.Control type='textArea' defaultValue={project.technology} name='technology' required />
+            <Form.Control as="textarea" rows={3} type='textArea' defaultValue={project.technology} name='technology' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Comparison</Form.Label>
-            <Form.Control type='textArea' defaultValue={project.comparison} name='comparison' required />
+            <Form.Control type='textArea' defaultValue={project.comparison} as="textarea" rows={3} name='comparison' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Basis</Form.Label>
-            <Form.Control type='textArea' defaultValue={project.basis} name='basis' required />
+            <Form.Control as="textarea" rows={3} type='textArea' defaultValue={project.basis} name='basis' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Needs</Form.Label>
-            <Form.Control type='textArea' defaultValue={project.needs} name='needs' required />
+            <Form.Control as="textarea" rows={3} type='textArea' defaultValue={project.needs} name='needs' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>target Client</Form.Label>
-            <Form.Control type='textArea' defaultValue={project.targetClient} name='targetClient' required />
+            <Form.Control as="textarea" rows={3} type='textArea' defaultValue={project.targetClient} name='targetClient' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Acceptable Outcome</Form.Label>
-            <Form.Control type='textArea' defaultValue={project.acceptableOutcome} name='acceptableOutcome' required />
+            <Form.Control as="textarea" rows={3} type='textArea' defaultValue={project.acceptableOutcome} name='acceptableOutcome' required />
           </Form.Group>
           <Form.Group controlId='Form.ControlSelect1'>
             <Form.Label>Need prototype</Form.Label>
@@ -124,10 +126,11 @@ function EditProjectForm({ project }) {
               <option>Yes</option>
             </Form.Control>
           </Form.Group>
-          <Button variant='primary' type='submit'>
+          <Button variant='dark' type='submit'>
             Submit
           </Button>
         </Form>
+      </div>
       </Container>
     </>
   );

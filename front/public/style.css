@@ -1,5 +1,5 @@
 body{
-    background-image: url('./img/bg.jpg');
+    background-image: url('./img/bg2.jpg');
     background-repeat: no-repeat;
     -moz-background-size: 100%;
     -webkit-background-size: 100%;
@@ -7,4 +7,5 @@ body{
     background-size: 100%;
     background-attachment:fixed;
     font-family: 'Roboto', sans-serif;
+    /*color: white;*/
 }

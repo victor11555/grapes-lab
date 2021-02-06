@@ -45,8 +45,9 @@ function RoadMap(props) {
 
   const projects = useSelector(state => state.user.project);
   return (
-    <div>
+    <div style={{color: 'white'}}>
       <StepProgressBar
+
         startingStep={3}// what now
         onSubmit={onFormSubmit}
         steps={[

@@ -58,7 +58,7 @@ function ProjectInfo({ project }) {
 
 
       <div className='btn-container'>
-        <Button className={'btn btn-dark'} variant='primary'>Связаться с ...</Button>{' '}
+        {/*<Button className={'btn btn-dark'} variant='primary'>Связаться с ...</Button>{' '}*/}
 
         <Button className={'btn btn-dark'} onClick={() => dispatch(addPdfAC(project))}
                 variant='primary'>Импорт в PDF</Button>

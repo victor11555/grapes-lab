@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createProjectAC } from '../../../store/actions/project.actions';
 import {useHistory} from "react-router-dom";
-
+import './CreateProjectForm.css'
 
 function CreateProjectForm({setState,state}) {
   const [select, setSelect] = useState(false);
@@ -69,46 +69,48 @@ function CreateProjectForm({setState,state}) {
   return (
     <>
       <Container>
+        <div className={'create-project-form'}>
         <Form onSubmit={submitHandler}>
-          <Form.Group>
-            <Form.Label>Concept</Form.Label>
-            <Form.Control name='concept' type='text' placeholder='Enter the concept of the project' required />
-          </Form.Group>
           <Form.Group>
             <Form.Label>Project name</Form.Label>
             <Form.Control name='projectName' type='text' required />
           </Form.Group>
           <Form.Group>
+            <Form.Label>Concept</Form.Label>
+            <Form.Control as="textarea" rows={3} name='concept' type='text' placeholder='Enter the concept of the project' required />
+          </Form.Group>
+
+          <Form.Group>
             <Form.Label>Description</Form.Label>
-            <Form.Control type='textArea' name='description' required />
+            <Form.Control as="textarea" rows={3} type='textArea' name='description' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Project result</Form.Label>
-            <Form.Control type='textArea' name='projectResult' required />
+            <Form.Control as="textarea" rows={3} type='textArea' name='projectResult' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Technology</Form.Label>
-            <Form.Control type='textArea' name='technology' required />
+            <Form.Control as="textarea" rows={3} type='textArea' name='technology' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Comparison</Form.Label>
-            <Form.Control type='textArea' name='comparison' required />
+            <Form.Control as="textarea" rows={3} type='textArea' name='comparison' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Basis</Form.Label>
-            <Form.Control type='textArea' name='basis' required />
+            <Form.Control as="textarea" rows={3} type='textArea' name='basis' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Needs</Form.Label>
-            <Form.Control type='textArea' name='needs' required />
+            <Form.Control as="textarea" rows={3} type='textArea' name='needs' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>target Client</Form.Label>
-            <Form.Control type='textArea' name='targetClient' required />
+            <Form.Control as="textarea" rows={3} type='textArea' name='targetClient' required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Acceptable Outcome</Form.Label>
-            <Form.Control type='textArea' name='acceptableOutcome' required />
+            <Form.Control as="textarea" rows={3} type='textArea' name='acceptableOutcome' required />
           </Form.Group>
           <Form.Group controlId='Form.ControlSelect1'>
             <Form.Label>Need prototype</Form.Label>
@@ -129,10 +131,11 @@ function CreateProjectForm({setState,state}) {
               <option>Yes</option>
             </Form.Control>
           </Form.Group>
-          <Button variant='primary' type='submit'>
+          <Button variant='dark' type='submit'>
             Submit
           </Button>
         </Form>
+        </div>
       </Container>
     </>
   );
