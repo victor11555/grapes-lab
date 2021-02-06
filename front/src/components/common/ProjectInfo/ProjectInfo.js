@@ -25,6 +25,10 @@ function ProjectInfo({ project }) {
   },[])
   const deleteProjectHandler = (e) =>{
     e.preventDefault()
+  //Здесь диспатч саги на удаление.
+    //ID проекта + токен.
+    //Пост на projects/delete
+    //в ответ success:true или message :)
   }
 
   return (
@@ -44,9 +48,8 @@ function ProjectInfo({ project }) {
       <Button className={'btn btn-dark'} onClick={() => dispatch(addPdfAC(project))}
               variant='primary'>Импорт в PDF</Button>
       {showEdit?<Button onClick={editFormHandler} className={'btn btn-dark'}>Редактировать проект</Button>:null}
-      {showEdit?<Button onClick={deleteProjectHandler}/>:null}
+      {showEdit?<Button className={'btn btn-dark'} onClick={deleteProjectHandler}>Удалить проект </Button>:null}
       {editForm?<EditProjectForm project={project}/>:null}
-
     </Container>
 
   );
