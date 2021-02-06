@@ -6,9 +6,12 @@ import RoadMap from '../RoadMap/RoadMap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPdfAC } from '../../../store/actions/pdf.actions';
 import EditProjectForm from '../../EditForm/Editform';
+import {deleteProjectAC} from "../../../store/actions/project.actions";
+import {useHistory} from "react-router-dom";
 
 function ProjectInfo({ project }) {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [showEdit, setShowEdit] = useState(false);
   const [editForm, setEditForm] = useState(false);
   const editFormHandler = (e) => {
@@ -17,7 +20,7 @@ function ProjectInfo({ project }) {
   };
   let i=-1
   const user = useSelector(state => state.user);
-
+  const token = JSON.parse(localStorage.getItem('jwt'))
 
   useEffect(() => {
     if (user.projects) {
@@ -33,6 +36,8 @@ function ProjectInfo({ project }) {
   }, []);
   const deleteProjectHandler = (e) => {
     e.preventDefault();
+    dispatch(deleteProjectAC({role: user.role, token, projectId : project._id}));
+    history.push('/cabinet')
     //Здесь диспатч саги на удаление.
     //ID проекта + токен.
     //Пост на projects/delete
