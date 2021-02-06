@@ -26,7 +26,7 @@ function ProjectCard({project}) {
 					<small className="text-muted">{ project.status }</small>
 					<small className="text-muted">{ project.rating }</small>
 					<small className="text-muted">
-						<Vote/>
+						<Vote projectId={project._id}/>
 					</small>
 					<Button className={'btn btn-dark'} onClick={ () => {
 						history.push('/project');

@@ -9,4 +9,6 @@ export const ADD_PROJECT = 'ADD_PROJECT';
 export const ADD_PDF = 'ADD_PDF';
 export const GET_ALL_PROJECTS = 'GET_ALL_PROJECTS';
 export const INIT_ALL_PROJECTS = 'INIT_ALL_PROJECTS';
-export const EDIT_PROFILE = 'EDIT_PROFILE'
+export const EDIT_PROFILE = 'EDIT_PROFILE';
+export const VOTE_PROJECT = 'VOTE_PROJECT';
+export const SAVE_VOTED_PROJECT = 'SAVE_VOTED_PROJECT';

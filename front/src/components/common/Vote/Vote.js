@@ -1,10 +1,14 @@
 import React from 'react';
 import style from './Vote.module.css';
+import { voteProjectsAC } from '../../../store/actions/project.actions';
+import { useDispatch } from 'react-redux';
 
-function Vote(props) {
+function Vote({projectId}) {
+	const dispatch = useDispatch()
 	function changeHandler(e){
 		e.preventDefault();
-		console.log(e.target);
+		const token = JSON.parse(localStorage.getItem('jwt'))
+		dispatch(voteProjectsAC({like: +e.target.value, token, projectId}))
 	}
 	return (
 		<form onChange={(e)=>changeHandler(e)}>
