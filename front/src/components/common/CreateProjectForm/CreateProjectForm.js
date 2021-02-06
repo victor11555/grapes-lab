@@ -45,7 +45,7 @@ function CreateProjectForm(props) {
       acceptableOutcome,
       additionalNeeds,
       needPrototype: boolNeedPrototype,
-      private: boolPrivate,
+      privaate: boolPrivate,
     }));
   };
 
@@ -121,7 +121,6 @@ function CreateProjectForm(props) {
             </Form.Control>
             <Form.Label>Private?</Form.Label>
             <Form.Control name={'private'} as='select'>
-
               <option>No</option>
               <option>Yes</option>
             </Form.Control>
