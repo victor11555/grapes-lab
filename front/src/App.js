@@ -5,7 +5,7 @@ import Login from './pages/Login/Login';
 import { Route, Switch } from 'react-router-dom';
 import NavBar from './components/common/Navbar/Navbar';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProfileAC } from './store/actions/getProfile.actions';
 import Footer from './components/common/Footer/Footer';
 import CabinetPage from './pages/CabinetPage/CabinetPage';
@@ -17,11 +17,16 @@ import { initAllProjectsAC } from './store/actions/project.actions';
 function App() {
   const dispatch = useDispatch();
 
+  const user = useSelector(state=>state.user)
+
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('jwt'));
     dispatch(getProfileAC({ token }));
-    dispatch(initAllProjectsAC([]));
   }, []);
+
+  useEffect(() => {
+    dispatch(initAllProjectsAC([]));
+  }, [user]);
 
   return (
     <div className='App'>
