@@ -12,7 +12,9 @@ export const userReducer = (state = {}, action) => {
       return { ...state, projects: [...state.projects, action.payload] };
 
     case DELETE_PROJECT_USER_STATE:
-      return [...state.projects.filter(el => el.id !== action.payload)]
+      console.log('hi')
+      console.log(action.payload)
+      return {...state, projects:[...state.projects.filter(el => el._id != action.payload)]}
 
     default:
       return state;

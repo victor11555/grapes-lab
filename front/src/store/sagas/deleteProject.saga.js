@@ -3,7 +3,6 @@ import {DELETE_PROJECT} from '../types';
 import {DELETE_PROJECT_URL} from '../../utils/urls';
 import {addErrorAC} from '../actions/error.actions';
 import {deleteProjectFromStoreAC} from "../actions/project.actions";
-import {useSelector} from "react-redux";
 import {deleteProjectUserStateAC} from "../actions/user.actions";
 
 async function RequestDeleteProject(payload) {
@@ -17,12 +16,15 @@ async function RequestDeleteProject(payload) {
 
 function* deleteProjectWorker({payload}) {
     const response = yield call(RequestDeleteProject, payload);
+    console.log(payload)
     if (payload.role === 'Admin') {
         if (response.success) yield put(deleteProjectFromStoreAC(response.projectId))
         else yield put(addErrorAC(response.message));
     } else {
-        if (response.success) yield put(deleteProjectUserStateAC(response.projectId))
-        else yield put(addErrorAC(response.message));
+        if (response.success) {
+            yield put(deleteProjectUserStateAC(response.projectId))
+            yield put(deleteProjectFromStoreAC(response.projectId))
+        } else yield put(addErrorAC(response.message));
     }
 }
 

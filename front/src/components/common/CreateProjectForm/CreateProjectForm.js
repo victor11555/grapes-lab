@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { createProjectAC } from '../../../store/actions/project.actions';
 
 
-function CreateProjectForm(setState,state) {
+function CreateProjectForm({setState,state}) {
   const [select, setSelect] = useState(false);
   const dispatch = useDispatch();
 
