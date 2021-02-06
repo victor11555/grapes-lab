@@ -17,7 +17,7 @@ const projectSchema = new mongoose.Schema({
   private:{Boolean,default:false},
   team: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   moderating: { type: Boolean, required: true, default: false },
-  rating: [],
+  rating: [{type: Object}],
   status: { type: String},
   comments:[{type:mongoose.Schema.Types.ObjectId,ref:'Comment'}],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}

@@ -77,7 +77,7 @@ router.post('/like', async (req, res) => {
         like,
       };
       let project = await Project.findById(projectId);
-      projectId.rating.push(likeObj);
+      project.rating.push(likeObj);
       await project.save();
       let stars;
       project.rating.forEach(el => {

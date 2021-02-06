@@ -5,7 +5,6 @@ import { addErrorAC } from '../actions/error.actions';
 import {getAllProjectsAC} from "../actions/project.actions";
 
 async function GetAllProjects(payload) {
-  console.log('gggg');
   const response = await fetch(GET_ALL_PROJECTS_URL);
   return await response.json()
 }
