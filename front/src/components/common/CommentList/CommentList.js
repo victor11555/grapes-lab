@@ -1,9 +1,9 @@
 import React from 'react';
 import CommentCard from '../CommentCard/CommentCard';
-
+import './Comment-list.css'
 function CommentList({ id }) {
   return (
-    <div>
+    <div className='comment-list'>
 
       <CommentCard />
 
