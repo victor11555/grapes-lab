@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown, Nav, Navbar } from 'react-bootstrap';
+import { Container, Dropdown, Nav, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogoutAC } from '../../../store/actions/logout.actions';
 import { Link, useHistory } from 'react-router-dom';
@@ -19,6 +19,7 @@ function NavBar() {
   return (
     <>
       <Navbar bg='dark' variant='dark'>
+
         <Navbar.Brand as={Link} to='/'>Main</Navbar.Brand>
         <Nav className='mr-auto'>
           {!user ? <Nav.Link as={Link} to='/login'>Login</Nav.Link> : null}
@@ -35,7 +36,6 @@ function NavBar() {
           </Dropdown.Menu>
         </Dropdown> : null}
       </Navbar>
-
     </>
   );
 }
