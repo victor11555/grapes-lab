@@ -16,10 +16,10 @@ const fonts = {
     bolditalics: 'Helvetica-BoldOblique',
   },
   Times: {
-    normal: '/public/Times New Roman.ttf',
-    bold: '/public/Times New Roman-bold.ttf',
-    italics: '/public/Times New Roman.ttf',
-    bolditalics: '/public/Times New Roman.ttf',
+    normal: '/public/fonts/TimesNewRoman.ttf',
+    bold: '/public/fonts/TimesNewRoman-bold.ttf',
+    italics: '/public/fonts/TimesNewRoman.ttf',
+    bolditalics: '/public/fonts/TimesNewRoman.ttf',
   },
   Symbol: {
     normal: 'Symbol',
