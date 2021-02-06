@@ -67,7 +67,7 @@ router.post('/like', async (req, res) => {
   const { token, like, projectId } = req.body;
   await jwt.verify(token, tokenKey, async (err, decoded) => {
     if (err) res.json({ success: false, message: 'token expired' });
-
+      else{
     try {
       let { id } = decoded;
       let likeObj = {
@@ -86,7 +86,7 @@ router.post('/like', async (req, res) => {
       await project.save()
       res.json({ success: true, project });
     } catch (err) {
-      res.json({ success: false, message: err.message });
+      res.json({ success: false, message: err.message })};
     }
   });
 });
